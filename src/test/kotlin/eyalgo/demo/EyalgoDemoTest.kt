@@ -15,5 +15,4 @@ class EyalgoDemoTest {
     fun testItWorks() {
         Assertions.assertTrue(application.isRunning)
     }
-
 }

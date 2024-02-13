@@ -5,13 +5,6 @@ micronaut:
     monitor:
       enabled: true
 
-datasources:
-  default:
-    url: jdbc:h2:mem:default;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
-    username: sa
-    password: ""
-    driverClassName: org.h2.Driver
-
 endpoints:
   health:
     enabled: true
@@ -22,18 +15,4 @@ endpoints:
       enabled: true
     flyway:
       enabled: true
-      sensitive: false
-
-jpa:
-  default:
-    packages-to-scan:
-      - 'eyalgo'
-    properties:
-      hibernate:
-        hbm2ddl:
-          auto: none
-        show_sql: true
-flyway:
-  datasources:
-    default:
-      enabled: true
+      details-visible: anonymous

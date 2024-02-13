@@ -4,12 +4,13 @@ import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.core.async.annotation.SingleResult
+import io.micronaut.http.MediaType.TEXT_PLAIN
 import org.reactivestreams.Publisher
 
-@Client("/hello") // (1)
+@Client("/hello")
 interface HelloClient {
 
-    @Get(consumes = [MediaType.TEXT_PLAIN]) // (2)
+    @Get(consumes = [TEXT_PLAIN])
     @SingleResult
-    fun hello(): Publisher<String>  // (3)
+    fun hello(): Publisher<String>
 }
