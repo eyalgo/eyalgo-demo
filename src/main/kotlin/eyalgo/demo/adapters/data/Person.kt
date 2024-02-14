@@ -1,4 +1,4 @@
-package eyalgo.demo.data
+package eyalgo.demo.adapters.data
 
 import io.micronaut.core.annotation.NonNull
 import io.micronaut.data.annotation.GeneratedValue
