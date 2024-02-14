@@ -13,7 +13,6 @@ plugins {
 version = "0.1"
 group = "eyalgo.demo"
 
-
 repositories {
     mavenCentral()
 }
@@ -37,6 +36,18 @@ dependencies {
     implementation("io.micronaut.liquibase:micronaut-liquibase:5.7.0")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari:4.8.0")
 
+    // exposed
+    // https://github.com/JetBrains/Exposed
+    val exposedVersion: String by project
+    implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-crypt:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
+
+    implementation("org.jetbrains.exposed:exposed-json:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-money:$exposedVersion")
+
     // Runtime stuff
     compileOnly("io.micronaut:micronaut-http-client:3.8.7")
     runtimeOnly("ch.qos.logback:logback-classic:1.4.12")
@@ -57,14 +68,13 @@ dependencies {
     testImplementation("com.h2database:h2:2.2.224")
 }
 
-
 application {
     mainClass.set("eyalgo.demo.ApplicationKt")
 }
+
 java {
     sourceCompatibility = JavaVersion.toVersion("17")
 }
-
 
 graalvmNative.toolchainDetection.set(false)
 micronaut {
