@@ -39,9 +39,10 @@ dependencies {
     // Testing
     testImplementation("io.micronaut:micronaut-http-client:3.8.7")
 
-    // kotest
+    // kotest and mockk
     testImplementation("io.kotest:kotest-assertions-core:5.8.0")
     testImplementation("io.kotest.extensions:kotest-assertions-arrow:1.4.0")
+    testImplementation("io.mockk:mockk:1.13.9")
 
     testImplementation("io.projectreactor:reactor-core:3.6.2")
 }
