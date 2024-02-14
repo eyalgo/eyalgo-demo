@@ -7,6 +7,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("io.micronaut.application") version "4.2.1"
     id("io.micronaut.aot") version "4.2.1"
+    id("io.micronaut.test-resources") version "4.3.2"
 }
 
 version = "0.1"
@@ -30,6 +31,12 @@ dependencies {
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime:3.2.2")
     implementation("io.micronaut.serde:micronaut-serde-jackson:1.5.2")
 
+    // micronaut data
+    ksp("io.micronaut.data:micronaut-data-processor:3.9.6")
+    implementation("io.micronaut.data:micronaut-data-jdbc:3.9.6")
+    implementation("io.micronaut.liquibase:micronaut-liquibase:5.7.0")
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari:4.8.0")
+
     // Runtime stuff
     compileOnly("io.micronaut:micronaut-http-client:3.8.7")
     runtimeOnly("ch.qos.logback:logback-classic:1.4.12")
@@ -45,6 +52,9 @@ dependencies {
     testImplementation("io.mockk:mockk:1.13.9")
 
     testImplementation("io.projectreactor:reactor-core:3.6.2")
+
+    // Testing DB
+    testImplementation("com.h2database:h2:2.2.224")
 }
 
 
