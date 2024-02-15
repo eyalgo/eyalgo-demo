@@ -1,3 +1,5 @@
+import io.micronaut.testresources.buildtools.KnownModules.JDBC_MYSQL
+
 plugins {
     val kotlinVersion = "1.9.21"
 
@@ -69,7 +71,7 @@ dependencies {
 }
 
 application {
-    mainClass.set("eyalgo.demo.ApplicationKt")
+    mainClass.set("eyalgo.demo.Application")
 }
 
 java {
@@ -94,5 +96,9 @@ micronaut {
         optimizeClassLoading.set(true)
         deduceEnvironment.set(true)
         optimizeNetty.set(true)
+    }
+    testResources {
+        enabled = true
+        additionalModules.add(JDBC_MYSQL)
     }
 }

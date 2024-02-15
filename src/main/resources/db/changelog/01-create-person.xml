@@ -16,15 +16,11 @@
                              primaryKeyName="personPK"/>
             </column>
 
-            <column name="version" type="BIGINT">
+            <column name="first_name" type="VARCHAR">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="firstName" type="VARCHAR">
-                <constraints nullable="false"/>
-            </column>
-
-            <column name="lastName" type="VARCHAR">
+            <column name="last_name" type="VARCHAR">
                 <constraints nullable="false"/>
             </column>
 

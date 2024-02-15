@@ -4,6 +4,7 @@
 - [API Reference](https://docs.micronaut.io/4.2.4/api/index.html)
 - [Configuration Reference](https://docs.micronaut.io/4.2.4/guide/configurationreference.html)
 - [Micronaut Guides](https://guides.micronaut.io/index.html)
+- [Micronaut for Spring](https://micronaut-projects.github.io/micronaut-spring/latest/guide/)
 ---
 
 - [Micronaut Gradle Plugin documentation](https://micronaut-projects.github.io/micronaut-gradle-plugin/latest/)
@@ -27,11 +28,20 @@
 
 # TODO
 
+- Add the DB links to this file
 - Setup project ✅
-- DB - JOOQ
-  - Testcontainers
+- DB
+  - JOOQ ❓
+  - exposed ❓ (✅)
+  - liquibase ✅
+- Testcontainers
+- profiles
+
+## Application
+- [Inversion of Control](https://docs.micronaut.io/latest/guide/#beans)
+- [Configuration](https://docs.micronaut.io/latest/guide/#configuration)
+- logging
+- Either
+- CI/CD (build jar)
 - Messaging
 - Cache
-- HTML Template
-- logging
-- CI/CD
