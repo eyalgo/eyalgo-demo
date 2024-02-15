@@ -29,8 +29,8 @@
 
 # TODO
 
-- Add the DB links to this file
 - Setup project ✅
+- jar an run the application
 - DB
   - JOOQ ❓
   - exposed ❓ (✅)

@@ -15,20 +15,8 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 @Bean
 class PersonRepositoryImpl: PersonRepository {
-    init {
-        /**
-         * The creation of the database and the table should be using liquibase.
-         */
-        println("initialising PersonRepositoryImpl")
 
-        Database.connect("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", driver = "org.h2.Driver", user = "root", password = "")
-        transaction {
-            addLogger(StdOutSqlLogger)
-            SchemaUtils.create(Persons)
-        }
-    }
-
-    private object Persons : Table("person") {
+    object Persons : Table("person") {
         val id: Column<Long> = long("id").autoIncrement()
         val firstName: Column<String> = varchar("first_name", length = 100)
         val lastName: Column<String> = varchar("last_name", length = 100)
