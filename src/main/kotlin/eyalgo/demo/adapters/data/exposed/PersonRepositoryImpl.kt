@@ -3,9 +3,8 @@ package eyalgo.demo.adapters.data.exposed
 import eyalgo.demo.domain.model.Person
 import eyalgo.demo.ports.PersonRepository
 import io.micronaut.context.annotation.Bean
+import kotlin.random.Random
 import org.jetbrains.exposed.sql.Column
-import org.jetbrains.exposed.sql.Database
-import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.StdOutSqlLogger
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.addLogger
@@ -17,7 +16,8 @@ import org.jetbrains.exposed.sql.transactions.transaction
 class PersonRepositoryImpl: PersonRepository {
 
     object Persons : Table("person") {
-        val id: Column<Long> = long("id").autoIncrement()
+        // TODO how to use @AutoPopulated ?
+        val id: Column<Long> = long("id")
         val firstName: Column<String> = varchar("first_name", length = 100)
         val lastName: Column<String> = varchar("last_name", length = 100)
     }
@@ -26,6 +26,7 @@ class PersonRepositoryImpl: PersonRepository {
         return transaction {
             addLogger(StdOutSqlLogger)
             Persons.insert {
+                it[id] = Random(100L).nextLong()
                 it[firstName] = person.firstName
                 it[lastName] = person.lastName
             } get Persons.id
