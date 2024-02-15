@@ -4,6 +4,7 @@ plugins {
     val kotlinVersion = "1.9.21"
 
     kotlin("jvm") version kotlinVersion
+    kotlin("plugin.serialization") version kotlinVersion
     id("org.jetbrains.kotlin.plugin.allopen") version kotlinVersion
     id("com.google.devtools.ksp") version "1.9.21-1.0.16"
     id("com.github.johnrengelman.shadow") version "8.1.1"
@@ -30,7 +31,11 @@ dependencies {
     ksp("io.micronaut.serde:micronaut-serde-processor:1.5.2")
     implementation("io.micronaut:micronaut-management:3.8.7")
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime:3.2.2")
-    implementation("io.micronaut.serde:micronaut-serde-jackson:1.5.2")
+
+    // micronaut serialization
+    val micronautSerdeVersion = "1.5.2"
+    annotationProcessor("io.micronaut.serde:micronaut-serde-processor:$micronautSerdeVersion")
+    implementation("io.micronaut.serde:micronaut-serde-jsonp:$micronautSerdeVersion")
 
     // micronaut data
     ksp("io.micronaut.data:micronaut-data-processor:3.9.6")
@@ -53,7 +58,6 @@ dependencies {
     // Runtime stuff
     compileOnly("io.micronaut:micronaut-http-client:3.8.7")
     runtimeOnly("ch.qos.logback:logback-classic:1.4.12")
-    runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin:2.14.2")
     runtimeOnly("org.yaml:snakeyaml:2.0")
 
     // Testing

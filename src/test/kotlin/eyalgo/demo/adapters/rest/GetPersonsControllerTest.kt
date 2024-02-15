@@ -1,6 +1,6 @@
-package eyalgo.demo.rest
+package eyalgo.demo.adapters.rest
 
-import eyalgo.demo.domain.model.GetPersonsService
+import eyalgo.demo.domain.GetPersonsService
 import eyalgo.demo.domain.model.Person
 import io.kotest.matchers.shouldBe
 import io.mockk.every

@@ -5,6 +5,7 @@
 - [Configuration Reference](https://docs.micronaut.io/4.2.4/guide/configurationreference.html)
 - [Micronaut Guides](https://guides.micronaut.io/index.html)
 - [Micronaut for Spring](https://micronaut-projects.github.io/micronaut-spring/latest/guide/)
+- [Baeldung](https://www.baeldung.com/micronaut)
 ---
 
 - [Micronaut Gradle Plugin documentation](https://micronaut-projects.github.io/micronaut-gradle-plugin/latest/)
