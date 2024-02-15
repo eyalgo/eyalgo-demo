@@ -37,9 +37,7 @@ dependencies {
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor:$micronautSerdeVersion")
     implementation("io.micronaut.serde:micronaut-serde-jsonp:$micronautSerdeVersion")
 
-    // micronaut data
-    ksp("io.micronaut.data:micronaut-data-processor:3.9.6")
-    implementation("io.micronaut.data:micronaut-data-jdbc:3.9.6")
+    // database
     implementation("io.micronaut.liquibase:micronaut-liquibase:5.7.0")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari:4.8.0")
 
@@ -81,6 +79,22 @@ application {
 java {
     sourceCompatibility = JavaVersion.toVersion("17")
 }
+
+//sourceSets {
+//    getByName("main").java.srcDirs("src/main/kotlin")
+//    getByName("test").java.srcDirs("src/test/kotlin")
+//}
+//
+//tasks {
+//    task<Test>("integrationTest") {
+//        description = "Runs integration tests."
+//
+//        filter {
+//            includeTestsMatching("*IT")
+//        }
+//        shouldRunAfter(test)
+//    }
+//}
 
 graalvmNative.toolchainDetection.set(false)
 micronaut {

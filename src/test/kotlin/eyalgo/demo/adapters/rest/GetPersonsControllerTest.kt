@@ -15,6 +15,6 @@ class GetPersonsControllerTest {
         every { service.getPersons() } returns listOf(
             Person("a", "b")
         )
-        controller.getPersons() shouldBe listOf(Person("a", "b"))
+        controller.getPersons() shouldBe listOf(PersonDTO("a", "b"))
     }
 }

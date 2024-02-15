@@ -1,5 +1,6 @@
 package eyalgo.demo.adapters.rest
 
+import eyalgo.demo.adapters.data.exposed.PersonRepositoryImpl
 import eyalgo.demo.domain.model.Person
 import eyalgo.demo.ports.PersonRepository
 import io.kotest.matchers.shouldBe
@@ -9,6 +10,9 @@ import io.micronaut.runtime.server.EmbeddedServer
 import io.micronaut.serde.ObjectMapper
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import jakarta.inject.Inject
+import org.jetbrains.exposed.sql.deleteAll
+import org.jetbrains.exposed.sql.transactions.transaction
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 @MicronautTest
@@ -22,6 +26,13 @@ class GetPersonsControllerTestIT(private val mapper: ObjectMapper) {
     @Inject
     @field:Client("/")
     lateinit var client: HttpClient
+
+    @BeforeEach
+    fun setUp() {
+        transaction {
+            PersonRepositoryImpl.Persons.deleteAll()
+        }
+    }
 
     @Test
     fun `verify getAll`() {

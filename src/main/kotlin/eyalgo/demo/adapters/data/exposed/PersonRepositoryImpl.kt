@@ -26,7 +26,7 @@ class PersonRepositoryImpl: PersonRepository {
         return transaction {
             addLogger(StdOutSqlLogger)
             Persons.insert {
-                it[id] = Random(100L).nextLong()
+                it[id] = Random(100000L).nextLong()
                 it[firstName] = person.firstName
                 it[lastName] = person.lastName
             } get Persons.id

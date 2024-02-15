@@ -30,13 +30,13 @@
 # TODO
 
 - Setup project ✅
-- jar an run the application
-- DB
+- DB ✅
   - JOOQ ❓
   - exposed ❓ (✅)
   - liquibase ✅
-- Testcontainers
 - profiles
+- Testcontainers
+- jar and run the application
 
 ## Application
 - [Inversion of Control](https://docs.micronaut.io/latest/guide/#beans)
