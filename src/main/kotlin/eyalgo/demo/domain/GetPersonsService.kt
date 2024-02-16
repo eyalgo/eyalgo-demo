@@ -2,10 +2,8 @@ package eyalgo.demo.domain
 
 import eyalgo.demo.domain.model.Person
 import eyalgo.demo.ports.PersonRepository
-import io.micronaut.context.annotation.Bean
 import jakarta.inject.Singleton
 
-@Bean
 @Singleton
 class GetPersonsService(private val repository: PersonRepository) {
     fun getPersons(): List<Person> =

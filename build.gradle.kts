@@ -1,3 +1,4 @@
+import org.gradle.api.file.DuplicatesStrategy.EXCLUDE
 import io.micronaut.testresources.buildtools.KnownModules.JDBC_MYSQL
 
 plugins {
@@ -85,7 +86,24 @@ java {
 //    getByName("test").java.srcDirs("src/test/kotlin")
 //}
 //
-//tasks {
+
+tasks {
+    val bootJar = register<Jar>("bootJar") {
+        dependsOn.addAll(listOf("compileKotlin", "processResources", "classes"))
+        archiveClassifier.set("eyalgo-demo.jar") // Naming the jar
+        duplicatesStrategy = EXCLUDE
+        manifest { attributes(mapOf("Main-Class" to application.mainClass)) }
+
+        val sourcesMain = sourceSets.main.get()
+        val contents = configurations.runtimeClasspath.get()
+            .map { if (it.isDirectory) it else zipTree(it) } +
+                sourcesMain.output
+        from(contents)
+    }
+
+    build {
+        dependsOn(bootJar)
+    }
 //    task<Test>("integrationTest") {
 //        description = "Runs integration tests."
 //
@@ -94,7 +112,7 @@ java {
 //        }
 //        shouldRunAfter(test)
 //    }
-//}
+}
 
 graalvmNative.toolchainDetection.set(false)
 micronaut {

@@ -34,13 +34,17 @@
   - JOOQ ❓
   - exposed ❓ (✅)
   - liquibase ✅
-- profiles
+- environments (profiles)
 - Testcontainers
 - jar and run the application
 
 ## Application
+
+- monitoring and health check
+- Check flyway
 - [Inversion of Control](https://docs.micronaut.io/latest/guide/#beans)
 - [Configuration](https://docs.micronaut.io/latest/guide/#configuration)
+- Check using GraalVM as an executable [7. Generate a Micronaut Application Native Executable with GraalVM](https://guides.micronaut.io/latest/creating-your-first-micronaut-app-maven-kotlin.html)
 - logging
 - Either
 - CI/CD (build jar)
