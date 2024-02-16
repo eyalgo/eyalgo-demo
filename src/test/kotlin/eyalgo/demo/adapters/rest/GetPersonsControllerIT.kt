@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
 
-@MicronautTest(environments = ["h2"])
+@MicronautTest(environments = ["h2", "exposed"])
 @TestInstance(PER_CLASS)
 class GetPersonsControllerIT: TestPropertyProvider {
     @Inject

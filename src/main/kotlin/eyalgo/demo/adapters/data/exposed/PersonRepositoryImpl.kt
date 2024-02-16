@@ -2,7 +2,8 @@ package eyalgo.demo.adapters.data.exposed
 
 import eyalgo.demo.domain.model.Person
 import eyalgo.demo.ports.PersonRepository
-import io.micronaut.context.annotation.Bean
+import io.micronaut.context.annotation.Requires
+import jakarta.inject.Singleton
 import kotlin.random.Random
 import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.StdOutSqlLogger
@@ -12,7 +13,8 @@ import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 
-@Bean
+@Singleton
+@Requires(env = ["exposed"])
 class PersonRepositoryImpl: PersonRepository {
 
     object Persons : Table("person") {
