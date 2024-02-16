@@ -1,18 +1,12 @@
 package eyalgo.demo.adapters.data.joooq
 
+import eyalgo.demo.IntegrationTest
 import eyalgo.demo.infrastructure.PostgresForTests
-import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import io.micronaut.test.extensions.testresources.annotation.TestResourcesProperties
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
 
-@MicronautTest(
-    startApplication = false,
-    environments = ["exposed"]
-)
-@TestInstance(PER_CLASS)
+@IntegrationTest
 @TestResourcesProperties(providers = [PostgresForTests::class])
 class PersonRepositoryImplIT {
 

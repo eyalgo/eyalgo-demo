@@ -38,19 +38,22 @@
 - Testcontainers
 - How to split tests
 - jar and run the application
+  - CI/CD
 
 ## Application
 
 - monitoring and health check
-- Check flyway
+- Security, roles, and permissions
+---
 - Check [Micronaut Control Panel](https://micronaut-projects.github.io/micronaut-control-panel/latest/guide/)
 - Check [TOML](https://toml.io/en/)
+- Check using GraalVM as an executable [7. Generate a Micronaut Application Native Executable with GraalVM](https://guides.micronaut.io/latest/creating-your-first-micronaut-app-maven-kotlin.html)
+- Check flyway
 - Check reactive mode
 - [Inversion of Control](https://docs.micronaut.io/latest/guide/#beans)
 - [Configuration](https://docs.micronaut.io/latest/guide/#configuration)
-- Check using GraalVM as an executable [7. Generate a Micronaut Application Native Executable with GraalVM](https://guides.micronaut.io/latest/creating-your-first-micronaut-app-maven-kotlin.html)
+---
 - logging
 - Either
-- CI/CD (build jar)
 - Messaging
 - Cache

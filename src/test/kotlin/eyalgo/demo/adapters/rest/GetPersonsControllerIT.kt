@@ -1,5 +1,6 @@
 package eyalgo.demo.adapters.rest
 
+import eyalgo.demo.IntegrationTest
 import eyalgo.demo.adapters.data.exposed.PersonRepositoryImpl
 import eyalgo.demo.infrastructure.PostgresForTests
 import eyalgo.demo.domain.model.Person
@@ -8,21 +9,14 @@ import io.micronaut.context.ApplicationContext
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.runtime.server.EmbeddedServer
-import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import io.micronaut.test.extensions.testresources.annotation.TestResourcesProperties
 import jakarta.inject.Inject
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
 
-@MicronautTest(
-    startApplication = false,
-    environments = ["exposed"]
-)
-@TestInstance(PER_CLASS)
+@IntegrationTest
 @TestResourcesProperties(providers = [PostgresForTests::class])
 class GetPersonsControllerIT {
     @Inject
