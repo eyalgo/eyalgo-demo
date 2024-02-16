@@ -67,8 +67,6 @@ dependencies {
     testImplementation("io.kotest.extensions:kotest-assertions-arrow:1.4.0")
     testImplementation("io.mockk:mockk:1.13.9")
 
-    testImplementation("io.projectreactor:reactor-core:3.6.2")
-
     // Testing DB
     testImplementation("com.h2database:h2:2.2.224")
 }
