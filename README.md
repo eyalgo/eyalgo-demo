@@ -36,12 +36,14 @@
   - liquibase ✅
 - environments (profiles)
 - Testcontainers
+- How to split tests
 - jar and run the application
 
 ## Application
 
 - monitoring and health check
 - Check flyway
+- Check [Micronaut Control Panel](https://micronaut-projects.github.io/micronaut-control-panel/latest/guide/)
 - Check [TOML](https://toml.io/en/)
 - Check reactive mode
 - [Inversion of Control](https://docs.micronaut.io/latest/guide/#beans)

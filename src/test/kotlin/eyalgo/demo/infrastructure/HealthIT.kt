@@ -1,18 +1,16 @@
-package eyalgo.demo.adapters.rest
+package eyalgo.demo.infrastructure
 
-import eyalgo.demo.adapters.data.exposed.PersonRepositoryImpl
-import eyalgo.demo.infrastructure.PostgresForTests
-import eyalgo.demo.domain.model.Person
-import eyalgo.demo.ports.PersonRepository
+import io.kotest.matchers.shouldBe
 import io.micronaut.context.ApplicationContext
+import io.micronaut.http.HttpRequest.GET
+import io.micronaut.http.HttpStatus
+import io.micronaut.http.HttpStatus.OK
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.runtime.server.EmbeddedServer
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import io.micronaut.test.extensions.testresources.annotation.TestResourcesProperties
 import jakarta.inject.Inject
-import org.jetbrains.exposed.sql.deleteAll
-import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
@@ -24,12 +22,9 @@ import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
 )
 @TestInstance(PER_CLASS)
 @TestResourcesProperties(providers = [PostgresForTests::class])
-class GetPersonsControllerIT {
+class HealthIT {
     @Inject
-    lateinit var repo: PersonRepository
-
-    @Inject
-    private lateinit var context: ApplicationContext
+    lateinit var context: ApplicationContext
 
     @field:Client("/")
     lateinit var client: HttpClient
@@ -39,26 +34,10 @@ class GetPersonsControllerIT {
         val server = context.getBean(EmbeddedServer::class.java)
         server.start()
         client = server.applicationContext.createBean(HttpClient::class.java, server.url)
-        transaction {
-            PersonRepositoryImpl.Persons.deleteAll()
-        }
     }
 
     @Test
-    fun `verify getAll`() {
-        val rsp: String = client.toBlocking()
-            .retrieve("/persons")
-        println(rsp)
-    }
-
-    @Test
-    fun `verify get person`() {
-        val id = repo.createPerson(Person("Eyal", "Golan"))
-
-        val rsp: String = client.toBlocking()
-            .retrieve("/persons/$id")
-
-        //private val objectMapper: ObjectMapper
-//        objectMapper.readValue(rsp, PersonDTO::class.java) shouldBe PersonDTO("Eyal", "Golan")
+    fun `health endpoint is exposed`() {
+        client.toBlocking().retrieve(GET<Any>("/health"), HttpStatus::class.java) shouldBe OK
     }
 }

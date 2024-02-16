@@ -1,24 +1,24 @@
 package eyalgo.demo.adapters.data.joooq
 
-import eyalgo.demo.domain.model.Person
-import eyalgo.demo.ports.PersonRepository
-import io.kotest.matchers.shouldBe
+import eyalgo.demo.infrastructure.PostgresForTests
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
-import jakarta.inject.Inject
+import io.micronaut.test.extensions.testresources.annotation.TestResourcesProperties
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
 
-@MicronautTest(environments = ["jooq"])
+@MicronautTest(
+    startApplication = false,
+    environments = ["exposed"]
+)
+@TestInstance(PER_CLASS)
+@TestResourcesProperties(providers = [PostgresForTests::class])
 class PersonRepositoryImplIT {
-    @Inject
-    lateinit var repo: PersonRepository
 
     @Test
     @Disabled("Not yet implemented")
     fun `create and get a person`() {
-        val person = Person("Eyal", "Golan")
-        val id = repo.createPerson(person)
-
-        repo.getPerson(id) shouldBe person
+        TODO("Not yet implemented")
     }
 }

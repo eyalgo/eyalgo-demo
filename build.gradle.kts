@@ -1,5 +1,5 @@
 import org.gradle.api.file.DuplicatesStrategy.EXCLUDE
-import io.micronaut.testresources.buildtools.KnownModules.JDBC_MYSQL
+import io.micronaut.testresources.buildtools.KnownModules.JDBC_POSTGRESQL
 
 plugins {
     val kotlinVersion = "1.9.21"
@@ -9,8 +9,10 @@ plugins {
     id("org.jetbrains.kotlin.plugin.allopen") version kotlinVersion
     id("com.google.devtools.ksp") version "1.9.21-1.0.16"
     id("com.github.johnrengelman.shadow") version "8.1.1"
+
     id("io.micronaut.application") version "4.2.1"
     id("io.micronaut.aot") version "4.2.1"
+
     id("io.micronaut.test-resources") version "4.3.2"
 }
 
@@ -42,6 +44,9 @@ dependencies {
     implementation("io.micronaut.liquibase:micronaut-liquibase:5.7.0")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari:4.8.0")
 
+    // DB
+    implementation("org.postgresql:postgresql:42.5.4")
+
     // exposed
     // https://github.com/JetBrains/Exposed
     val exposedVersion: String by project
@@ -67,8 +72,14 @@ dependencies {
     testImplementation("io.kotest.extensions:kotest-assertions-arrow:1.4.0")
     testImplementation("io.mockk:mockk:1.13.9")
 
-    // Testing DB
-    testImplementation("com.h2database:h2:2.2.224")
+
+    // Test Resources
+    val extensionVersion = "2.3.3"
+    testImplementation("io.micronaut.testresources:micronaut-test-resources-extensions-core:$extensionVersion")
+    testImplementation("io.micronaut.testresources:micronaut-test-resources-extensions-junit-platform:$extensionVersion")
+    val testContainersVersion = "1.17.6"
+    testImplementation("org.testcontainers:testcontainers:$testContainersVersion")
+    testImplementation("org.testcontainers:postgresql:$testContainersVersion")
 }
 
 application {
@@ -133,6 +144,6 @@ micronaut {
     }
     testResources {
         enabled = true
-        additionalModules.add(JDBC_MYSQL)
+        additionalModules.add(JDBC_POSTGRESQL)
     }
 }
