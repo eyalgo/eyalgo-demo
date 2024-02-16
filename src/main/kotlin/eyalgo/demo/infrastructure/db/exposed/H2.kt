@@ -2,13 +2,15 @@ package eyalgo.demo.infrastructure.db.exposed
 
 import io.micronaut.context.annotation.Context
 import io.micronaut.context.annotation.Infrastructure
+import io.micronaut.context.annotation.Requires
 import org.jetbrains.exposed.sql.Database
 
 @Context
 @Infrastructure
-class DatabaseSetup {
+@Requires(env = ["h2", "exposed"])
+class H2 {
     init {
-        println("----------------- Database Setup -----------------")
+        println("----------------- H2 Database Setup -----------------")
         Database.connect(
             "jdbc:h2:mem:test;SCHEMA=PUBLIC;DB_CLOSE_DELAY=-1",
             driver = "org.h2.Driver",

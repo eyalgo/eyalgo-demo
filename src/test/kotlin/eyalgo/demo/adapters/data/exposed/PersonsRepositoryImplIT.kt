@@ -7,8 +7,8 @@ import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import jakarta.inject.Inject
 import org.junit.jupiter.api.Test
 
-@MicronautTest
-class PersonsRepositoryImplTest {
+@MicronautTest(environments = ["h2"])
+class PersonsRepositoryImplIT {
     @Inject
     lateinit var repo: PersonRepository
 
