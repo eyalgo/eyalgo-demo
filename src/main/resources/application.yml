@@ -13,9 +13,6 @@ endpoints:
       enabled: true
     jdbc:
       enabled: true
-    flyway:
-      enabled: true
-      details-visible: anonymous
 
 datasources:
   default:
@@ -24,21 +21,9 @@ datasources:
     password: ''
     driverClassName: 'org.h2.Driver'
 
-jpa:
-  default:
-    packages-to-scan:
-      - 'eyalgo.demo.adapters.data'
-      - 'eyalgo.demo.adapters.data.exposed'
-    properties:
-      hibernate:
-        hbm2ddl:
-          auto: none
-        show_sql: true
-
 liquibase:
   enabled: true
   datasources:
     default:
       liquibase-schema: "PUBLIC"
       change-log: 'classpath:db/liquibase-changelog.xml'
-#      default-schema: "eyalgo-demo"

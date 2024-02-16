@@ -42,6 +42,7 @@
 
 - monitoring and health check
 - Check flyway
+- Check [TOML](https://toml.io/en/)
 - [Inversion of Control](https://docs.micronaut.io/latest/guide/#beans)
 - [Configuration](https://docs.micronaut.io/latest/guide/#configuration)
 - Check using GraalVM as an executable [7. Generate a Micronaut Application Native Executable with GraalVM](https://guides.micronaut.io/latest/creating-your-first-micronaut-app-maven-kotlin.html)
