@@ -21,6 +21,12 @@ endpoints:
       enabled: true
     jdbc:
       enabled: true
+    beans:
+      enabled: true
+      sensitive: true
+    info:
+      enabled: true
+      sensitive: false
 
 jpa:
   enabled: false

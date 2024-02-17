@@ -8,6 +8,6 @@ import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
 @TestInstance(PER_CLASS)
 @MicronautTest(
     startApplication = false,
-    environments = ["exposed"]
+    environments = ["exposed", "integrationTest"]
 )
 annotation class IntegrationTest
