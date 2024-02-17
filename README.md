@@ -44,18 +44,20 @@
   - exposed ❓ (✅)
     - [baeldung](https://www.baeldung.com/kotlin/exposed-persistence)
   - liquibase ✅
-- environments (profiles)
+- environments (profiles) ✅
 - Testcontainers ✅
   - Need to optimise startup and more
 - How to split tests
-- jar and run the application
+- jar and run the application ✅
   - CI/CD
 
 ## Application
 
 - monitoring and health check
 - Security, roles, and permissions
+
 ---
+
 - Check [Micronaut Control Panel](https://micronaut-projects.github.io/micronaut-control-panel/latest/guide/)
 - Check [TOML](https://toml.io/en/)
 - Check using GraalVM as an executable [7. Generate a Micronaut Application Native Executable with GraalVM](https://guides.micronaut.io/latest/creating-your-first-micronaut-app-maven-kotlin.html)
@@ -63,7 +65,9 @@
 - Check reactive mode
 - [Inversion of Control](https://docs.micronaut.io/latest/guide/#beans)
 - [Configuration](https://docs.micronaut.io/latest/guide/#configuration)
+
 ---
+
 - logging
 - Either
 - Messaging

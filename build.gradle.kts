@@ -1,4 +1,3 @@
-import org.gradle.api.file.DuplicatesStrategy.EXCLUDE
 import io.micronaut.testresources.buildtools.KnownModules.JDBC_POSTGRESQL
 
 plugins {
@@ -90,29 +89,17 @@ java {
     sourceCompatibility = JavaVersion.toVersion("17")
 }
 
-//sourceSets {
-//    getByName("main").java.srcDirs("src/main/kotlin")
-//    getByName("test").java.srcDirs("src/test/kotlin")
-//}
-//
-
 tasks {
-//    val bootJar = register<Jar>("bootJar") {
-//        dependsOn.addAll(listOf("compileKotlin", "processResources", "classes"))
-//        archiveClassifier.set("eyalgo-demo.jar") // Naming the jar
-//        duplicatesStrategy = EXCLUDE
-//        manifest { attributes(mapOf("Main-Class" to application.mainClass)) }
-//
-//        val sourcesMain = sourceSets.main.get()
-//        val contents = configurations.runtimeClasspath.get()
-//            .map { if (it.isDirectory) it else zipTree(it) } +
-//                sourcesMain.output
-//        from(contents)
-//    }
-//
-//    build {
-//        dependsOn(bootJar)
-//    }
+    task<Copy>("bootJar") {
+        description = "Support pipelines, which are adjusted to SpringBoot."
+        dependsOn.add(build)
+
+        from("build/libs/${project.name}-${project.version}-all-optimized.jar")
+        into("build/libs")
+        rename{ fileName ->
+            fileName.replace("${project.name}-${project.version}-all-optimized", project.name)
+        }
+    }
 }
 
 graalvmNative.toolchainDetection.set(false)
