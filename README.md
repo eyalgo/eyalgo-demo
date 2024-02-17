@@ -55,6 +55,7 @@
 
 - monitoring and health check
 - Security, roles, and permissions
+  - [JWT](https://guides.micronaut.io/latest/micronaut-security-jwt-gradle-kotlin.html)
 
 ---
 

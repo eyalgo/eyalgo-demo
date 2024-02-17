@@ -46,6 +46,19 @@ dependencies {
     // DB
     implementation("org.postgresql:postgresql:42.5.4")
 
+    // validation
+    annotationProcessor("io.micronaut:micronaut-http-validation:3.9.2")
+    annotationProcessor("io.micronaut.validation:micronaut-validation-processor:3.9.2")
+    implementation("io.micronaut.validation:micronaut-validation:3.8.7")
+    implementation("jakarta.validation:jakarta.validation-api:3.0.2")
+
+    // jwt
+    val micronautSecurityVersion = "3.10.0"
+    annotationProcessor("io.micronaut.security:micronaut-security-annotations:$micronautSecurityVersion")
+    implementation("io.micronaut.security:micronaut-security-jwt:$micronautSecurityVersion")
+    aotPlugins("io.micronaut.security:micronaut-security-aot:$micronautSecurityVersion")
+    aotPlugins(platform("io.micronaut.platform:micronaut-platform:4.3.2"))
+
     // exposed
     // https://github.com/JetBrains/Exposed
     val exposedVersion: String by project
