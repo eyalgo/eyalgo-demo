@@ -97,29 +97,21 @@ java {
 //
 
 tasks {
-    val bootJar = register<Jar>("bootJar") {
-        dependsOn.addAll(listOf("compileKotlin", "processResources", "classes"))
-        archiveClassifier.set("eyalgo-demo.jar") // Naming the jar
-        duplicatesStrategy = EXCLUDE
-        manifest { attributes(mapOf("Main-Class" to application.mainClass)) }
-
-        val sourcesMain = sourceSets.main.get()
-        val contents = configurations.runtimeClasspath.get()
-            .map { if (it.isDirectory) it else zipTree(it) } +
-                sourcesMain.output
-        from(contents)
-    }
-
-    build {
-        dependsOn(bootJar)
-    }
-//    task<Test>("integrationTest") {
-//        description = "Runs integration tests."
+//    val bootJar = register<Jar>("bootJar") {
+//        dependsOn.addAll(listOf("compileKotlin", "processResources", "classes"))
+//        archiveClassifier.set("eyalgo-demo.jar") // Naming the jar
+//        duplicatesStrategy = EXCLUDE
+//        manifest { attributes(mapOf("Main-Class" to application.mainClass)) }
 //
-//        filter {
-//            includeTestsMatching("*IT")
-//        }
-//        shouldRunAfter(test)
+//        val sourcesMain = sourceSets.main.get()
+//        val contents = configurations.runtimeClasspath.get()
+//            .map { if (it.isDirectory) it else zipTree(it) } +
+//                sourcesMain.output
+//        from(contents)
+//    }
+//
+//    build {
+//        dependsOn(bootJar)
 //    }
 }
 

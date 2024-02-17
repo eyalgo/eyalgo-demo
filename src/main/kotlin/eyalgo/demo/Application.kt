@@ -2,6 +2,9 @@ package eyalgo.demo
 
 import io.micronaut.runtime.Micronaut.run
 
-fun main(vararg args: String) {
-	run(*args)
+object Application {
+	@JvmStatic
+	fun main(vararg args: String) {
+		run(Application::class.java, *args)
+	}
 }
