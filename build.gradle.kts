@@ -1,3 +1,4 @@
+import io.micronaut.testresources.buildtools.KnownModules.JDBC_MYSQL
 import io.micronaut.testresources.buildtools.KnownModules.JDBC_POSTGRESQL
 
 plugins {
@@ -91,16 +92,18 @@ dependencies {
     testImplementation("io.kotest.extensions:kotest-assertions-arrow:1.4.0")
     testImplementation("io.mockk:mockk:1.13.9")
 
-    // Test DB
+    // Test database drivers
     testRuntimeOnly("org.postgresql:postgresql:42.5.4")
+    testRuntimeOnly("com.mysql:mysql-connector-j:8.2.0")
 
     // Test Resources
     val extensionVersion = "2.3.3"
     testImplementation("io.micronaut.testresources:micronaut-test-resources-extensions-core:$extensionVersion")
     testImplementation("io.micronaut.testresources:micronaut-test-resources-extensions-junit-platform:$extensionVersion")
-    val testContainersVersion = "1.17.6"
+    val testContainersVersion = "1.19.3"
     testImplementation("org.testcontainers:testcontainers:$testContainersVersion")
     testImplementation("org.testcontainers:postgresql:$testContainersVersion")
+    testImplementation("org.testcontainers:mysql:$testContainersVersion")
 }
 
 application {
@@ -145,6 +148,6 @@ micronaut {
     }
     testResources {
         enabled = false
-        additionalModules.add(JDBC_POSTGRESQL)
+        additionalModules.addAll(JDBC_POSTGRESQL, JDBC_MYSQL)
     }
 }

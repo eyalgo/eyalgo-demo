@@ -25,14 +25,13 @@ import org.junit.jupiter.api.Test
 @TestResourcesProperties(providers = [PostgresForTests::class])
 class HealthIT {
     @Inject
-    lateinit var context: ApplicationContext
+    private lateinit var server: EmbeddedServer
 
     @field:Client("/")
-    lateinit var client: HttpClient
+    private lateinit var client: HttpClient
 
     @BeforeEach
     fun setUp() {
-        val server = context.getBean(EmbeddedServer::class.java)
         server.start()
         client = server.applicationContext.createBean(HttpClient::class.java, server.url)
     }

@@ -20,7 +20,6 @@ class PostgresForTests: TestResourcesPropertyProvider, DefaultApplicationContext
     override fun provide(testProperties: MutableMap<String, Any>): MutableMap<String, String> {
         println("=================== PostgresForTests provide =================== ")
         return mutableMapOf(
-            "datasources.default.driver-class-name" to "org.postgresql.Driver",
             "datasources.default.url" to postgres.jdbcUrl,
             "datasources.default.username" to postgres.username,
             "datasources.default.password" to postgres.password,

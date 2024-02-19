@@ -2,8 +2,8 @@ package eyalgo.demo.adapters.rest
 
 import eyalgo.demo.IntegrationTest
 import eyalgo.demo.adapters.data.exposed.PersonRepositoryImpl
-import eyalgo.demo.infrastructure.PostgresForTests
 import eyalgo.demo.domain.model.Person
+import eyalgo.demo.infrastructure.MySQLForTests
 import eyalgo.demo.ports.PersonRepository
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
@@ -18,7 +18,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 @IntegrationTest
-@TestResourcesProperties(providers = [PostgresForTests::class])
+@TestResourcesProperties(providers = [MySQLForTests::class])
 class GetPersonsControllerIT {
     @Inject
     lateinit var repo: PersonRepository
@@ -27,7 +27,7 @@ class GetPersonsControllerIT {
     private lateinit var server: EmbeddedServer
 
     @field:Client("/")
-    lateinit var client: HttpClient
+    private lateinit var client: HttpClient
 
     @BeforeEach
     fun setUp() {
