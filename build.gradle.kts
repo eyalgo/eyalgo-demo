@@ -40,7 +40,6 @@ dependencies {
     implementation("io.micronaut.serde:micronaut-serde-jsonp:$micronautSerdeVersion")
 
     // database migration
-//    implementation("io.micronaut.liquibase:micronaut-liquibase:5.7.0")
     implementation("io.micronaut.flyway:micronaut-flyway:5.5.0") {
         exclude(group = "io.micronaut", module = "micronaut-jackson-databind")
     }

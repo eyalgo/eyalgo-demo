@@ -47,10 +47,3 @@ flyway:
       enabled: true
       locations:
         - classpath:databasemigrations
-
-liquibase:
-  enabled: true
-  datasources:
-    default:
-      liquibase-schema: "PUBLIC"
-      change-log: 'classpath:db/liquibase-changelog.xml'
