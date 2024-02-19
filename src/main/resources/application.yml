@@ -41,6 +41,13 @@ datasources:
     dialect: 'H2'
     driverClassName: 'org.h2.Driver'
 
+flyway:
+  datasources:
+    default:
+      enabled: true
+      locations:
+        - classpath:databasemigrations
+
 liquibase:
   enabled: true
   datasources:

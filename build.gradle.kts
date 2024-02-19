@@ -39,11 +39,15 @@ dependencies {
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor:$micronautSerdeVersion")
     implementation("io.micronaut.serde:micronaut-serde-jsonp:$micronautSerdeVersion")
 
-    // database
-    implementation("io.micronaut.liquibase:micronaut-liquibase:5.7.0")
-    implementation("io.micronaut.sql:micronaut-jdbc-hikari:4.8.0")
+    // database migration
+//    implementation("io.micronaut.liquibase:micronaut-liquibase:5.7.0")
+    implementation("io.micronaut.flyway:micronaut-flyway:5.5.0") {
+        exclude(group = "io.micronaut", module = "micronaut-jackson-databind")
+    }
+    runtimeOnly("org.flywaydb:flyway-mysql:9.16.0")
 
     // DB
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari:4.8.0")
     runtimeOnly("com.h2database:h2:2.2.224")
 
     // validation
