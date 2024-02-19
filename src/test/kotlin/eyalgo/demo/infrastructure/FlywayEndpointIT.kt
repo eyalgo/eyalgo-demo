@@ -11,8 +11,11 @@ import org.junit.jupiter.api.Test
 
 @MicronautTest
 class FlywayEndpointIT(@field:Client("/") val client: HttpClient) {
+    /**
+     * See: https://guides.micronaut.io/latest/micronaut-flyway-gradle-kotlin.html
+     */
     @Test
-    @Disabled("There are issues with the serialisation of the flyway endpoint")
+    @Disabled("There are issues with the serialization of the flyway endpoint")
     fun `verify flyway endpoint`() {
         When {
             get("/flyway")
