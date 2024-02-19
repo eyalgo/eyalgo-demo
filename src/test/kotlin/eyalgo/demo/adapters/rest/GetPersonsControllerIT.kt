@@ -1,6 +1,7 @@
 package eyalgo.demo.adapters.rest
 
 import eyalgo.demo.IntegrationTest
+import eyalgo.demo.matchers.Is
 import eyalgo.demo.adapters.data.exposed.PersonRepositoryImpl
 import eyalgo.demo.domain.model.Person
 import eyalgo.demo.infrastructure.MySQLForTests
@@ -9,9 +10,9 @@ import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.runtime.server.EmbeddedServer
 import io.micronaut.test.extensions.testresources.annotation.TestResourcesProperties
-import io.restassured.specification.RequestSpecification
+import io.restassured.module.kotlin.extensions.Then
+import io.restassured.module.kotlin.extensions.When
 import jakarta.inject.Inject
-import org.hamcrest.CoreMatchers.`is`
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.BeforeEach
@@ -39,11 +40,13 @@ class GetPersonsControllerIT {
     }
 
     @Test
-    fun `verify getAll`(spec: RequestSpecification) {
-        spec
-            .`when`().get("/persons")
-            .then().statusCode(200)
-            .body(`is`("[{\"firstName\":\"firstName-1\",\"lastName\":\"lastName-1\"},{\"firstName\":\"firstName-2\",\"lastName\":\"lastName-2\"}]"))
+    fun `verify getAll`() {
+        When {
+            get("/persons")
+        } Then {
+            statusCode(200)
+            body(Is("[{\"firstName\":\"firstName-1\",\"lastName\":\"lastName-1\"},{\"firstName\":\"firstName-2\",\"lastName\":\"lastName-2\"}]"))
+        }
     }
 
     @Test

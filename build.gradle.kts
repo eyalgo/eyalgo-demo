@@ -26,6 +26,23 @@ repositories {
     mavenCentral()
 }
 
+application {
+    mainClass.set("eyalgo.demo.Application")
+}
+
+java {
+    sourceCompatibility = JavaVersion.toVersion("17")
+}
+
+idea {
+    module {
+        // Not using += due to https://github.com/gradle/gradle/issues/8749
+        sourceDirs = sourceDirs + file("build/generated/ksp/main/kotlin") // or tasks["kspKotlin"].destination
+        testSourceDirs = testSourceDirs + file("build/generated/ksp/test/kotlin")
+        generatedSourceDirs = generatedSourceDirs + file("build/generated/ksp/main/kotlin") + file("build/generated/ksp/test/kotlin")
+    }
+}
+
 dependencies {
     val kotlinVersion: String by project
     // kotlin stuff
@@ -95,7 +112,7 @@ dependencies {
 
     // Testing
     testImplementation("io.micronaut:micronaut-http-client:$micronautVersion")
-    testImplementation("io.micronaut.test:micronaut-test-rest-assured:3.9.2")
+    testImplementation("io.rest-assured:kotlin-extensions:5.4.0")
 
     // kotest and mockk
     testImplementation("io.kotest:kotest-assertions-core:5.8.0")
@@ -115,32 +132,6 @@ dependencies {
     testImplementation("org.testcontainers:postgresql:$testContainersVersion")
     testImplementation("org.testcontainers:mysql:$testContainersVersion")
 }
-
-application {
-    mainClass.set("eyalgo.demo.Application")
-}
-
-java {
-    sourceCompatibility = JavaVersion.toVersion("17")
-}
-
-idea {
-    module {
-        // Not using += due to https://github.com/gradle/gradle/issues/8749
-        sourceDirs = sourceDirs + file("build/generated/ksp/main/kotlin") // or tasks["kspKotlin"].destination
-        testSourceDirs = testSourceDirs + file("build/generated/ksp/test/kotlin")
-        generatedSourceDirs = generatedSourceDirs + file("build/generated/ksp/main/kotlin") + file("build/generated/ksp/test/kotlin")
-    }
-}
-
-//kotlin {
-//    sourceSets.main {
-//        kotlin.srcDir("build/generated/ksp/main/kotlin")
-//    }
-//    sourceSets.test {
-//        kotlin.srcDir("build/generated/ksp/test/kotlin")
-//    }
-//}
 
 tasks {
     task<Copy>("bootJar") {
