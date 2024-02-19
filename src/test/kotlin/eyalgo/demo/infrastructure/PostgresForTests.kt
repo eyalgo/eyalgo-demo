@@ -1,11 +1,12 @@
 package eyalgo.demo.infrastructure
 
+import io.micronaut.context.DefaultApplicationContextBuilder
 import io.micronaut.core.annotation.ReflectiveAccess
 import io.micronaut.test.extensions.testresources.TestResourcesPropertyProvider
 import org.testcontainers.containers.PostgreSQLContainer
 
 @ReflectiveAccess
-class PostgresForTests: TestResourcesPropertyProvider {
+class PostgresForTests: TestResourcesPropertyProvider, DefaultApplicationContextBuilder() {
     private val postgres = PostgreSQLContainer("postgres:15.2-alpine")
     init {
         println("=================== PostgresForTests init =================== ")

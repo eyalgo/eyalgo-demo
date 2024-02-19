@@ -19,6 +19,7 @@
 - [Micronaut Scope Types](https://guides.micronaut.io/latest/micronaut-scope-types-gradle-java.html)
 - [Configuration](https://guides.micronaut.io/latest/micronaut-configuration-gradle-kotlin.html)
 - [Annotations](https://www.baeldung.com/kotlin/annotations)
+- [Management](https://docs.micronaut.io/latest/guide/#management)
 - [Test Resources](https://micronaut-projects.github.io/micronaut-test-resources/latest/guide/#modules-testcontainers)
   - [Good tutorial](https://guides.micronaut.io/latest/replace-h2-with-real-database-for-testing.html)
 - [Baeldung](https://www.baeldung.com/micronaut)
