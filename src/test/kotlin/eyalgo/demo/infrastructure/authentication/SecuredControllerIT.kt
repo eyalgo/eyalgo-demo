@@ -9,7 +9,6 @@ import io.kotest.matchers.optional.shouldBePresent
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.kotest.matchers.types.shouldBeTypeOf
-import io.micronaut.context.ApplicationContext
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.HttpRequest.GET
 import io.micronaut.http.HttpRequest.POST
@@ -31,15 +30,15 @@ import org.junit.jupiter.api.Test
 @IntegrationTest
 @TestResourcesProperties(providers = [PostgresForTests::class])
 class SecuredControllerIT {
-    @Inject
-    private lateinit var context: ApplicationContext
 
     @field:Client("/")
     lateinit var client: HttpClient
 
+    @Inject
+    private lateinit var server: EmbeddedServer
+
     @BeforeEach
     fun setUp() {
-        val server = context.getBean(EmbeddedServer::class.java)
         server.start()
         client = server.applicationContext.createBean(HttpClient::class.java, server.url)
     }
