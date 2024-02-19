@@ -8,9 +8,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 
 
 @TestInstance(PER_CLASS)
-@ExtendWith(IntegrationTestExtension::class)
 @MicronautTest(
-    contextBuilder = [CustomContextBuilder::class],
     startApplication = false,
     environments = ["exposed", "integrationTest"]
 )
