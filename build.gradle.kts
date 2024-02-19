@@ -44,7 +44,7 @@ dependencies {
     implementation("io.micronaut.sql:micronaut-jdbc-hikari:4.8.0")
 
     // DB
-    implementation("org.postgresql:postgresql:42.5.4")
+    runtimeOnly("com.h2database:h2:2.2.224")
 
     // validation
     annotationProcessor("io.micronaut:micronaut-http-validation:3.9.2")
@@ -87,6 +87,9 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core:5.8.0")
     testImplementation("io.kotest.extensions:kotest-assertions-arrow:1.4.0")
     testImplementation("io.mockk:mockk:1.13.9")
+
+    // Test DB
+    testRuntimeOnly("org.postgresql:postgresql:42.5.4")
 
     // Test Resources
     val extensionVersion = "2.3.3"
@@ -138,7 +141,7 @@ micronaut {
         optimizeNetty.set(true)
     }
     testResources {
-        enabled = true
+        enabled = false
         additionalModules.add(JDBC_POSTGRESQL)
     }
 }

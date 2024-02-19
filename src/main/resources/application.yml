@@ -34,9 +34,12 @@ jpa:
 
 datasources:
   default:
-    db-type: "postgres"
-    dialect: "POSTGRES"
-    driverClassName: 'org.postgresql.Drive'
+    db-type: "h2"
+    url: 'jdbc:h2:mem:liquibaseDisabledDb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=TRUE'
+    username: 'sa'
+    password: ''
+    dialect: 'H2'
+    driverClassName: 'org.h2.Driver'
 
 liquibase:
   enabled: true
