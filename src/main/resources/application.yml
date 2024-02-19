@@ -4,6 +4,11 @@ micronaut:
   health:
     monitor:
       enabled: true
+  metrics:
+    enabled: true
+    binders:
+      web:
+        enabled: true
   security:
     authentication: bearer
     token:
@@ -29,6 +34,9 @@ endpoints:
     enabled: true
     sensitive: false
   flyway:
+    enabled: true
+    sensitive: false
+  metrics:
     enabled: true
     sensitive: false
 

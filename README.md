@@ -47,7 +47,7 @@
   - liquibase ✅
 - environments (profiles) ✅
 - Testcontainers ✅
-  - Need to optimise startup and more
+  - Need to optimise startup and more ✅
 - How to split tests
 - jar and run the application ✅
   - CI/CD
@@ -55,6 +55,7 @@
 ## Application
 
 - monitoring and health check
+  - [Micronaut Micrometer](https://micronaut-projects.github.io/micronaut-micrometer/latest/guide/)
 - Security, roles, and permissions
   - [JWT](https://guides.micronaut.io/latest/micronaut-security-jwt-gradle-kotlin.html)
   - [Micronaut Security](https://micronaut-projects.github.io/micronaut-security/latest/guide/index.html#custom)
@@ -63,7 +64,7 @@
 
 - Check [Micronaut Control Panel](https://micronaut-projects.github.io/micronaut-control-panel/latest/guide/)
 - Check [TOML](https://toml.io/en/)
-- Check using GraalVM as an executable [7. Generate a Micronaut Application Native Executable with GraalVM](https://guides.micronaut.io/latest/creating-your-first-micronaut-app-maven-kotlin.html)
+- Check using [GraalVM](https://guides.micronaut.io/latest/creating-your-first-micronaut-app-maven-kotlin.html)
 - [Flyway](https://micronaut-projects.github.io/micronaut-flyway/latest/guide/) ✅
 - Check reactive mode
 - [Inversion of Control](https://docs.micronaut.io/latest/guide/#beans)

@@ -1,14 +1,18 @@
 package eyalgo.demo
 
+import io.micrometer.core.instrument.MeterRegistry
 import io.micronaut.http.MediaType.TEXT_PLAIN
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 
-@Controller("/hello") // (1)
-class HelloController {
+@Controller("/hello")
+class HelloController(private val meterRegistry: MeterRegistry) {
 
-    @Get(produces = [TEXT_PLAIN]) // (2)
+    @Get("1", produces = [TEXT_PLAIN])
     fun helloWorld(): String {
-        return "Hello World" // (3)
+        meterRegistry
+            .counter("hello.world.1.counter")
+            .increment()
+        return "Hello World 1"
     }
 }
