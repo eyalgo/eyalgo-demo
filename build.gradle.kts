@@ -14,6 +14,8 @@ plugins {
     id("io.micronaut.aot") version "4.2.1"
 
     id("io.micronaut.test-resources") version "4.3.2"
+
+    id("com.gorylenko.gradle-git-properties") version "2.4.1"
 }
 
 version = "0.1"

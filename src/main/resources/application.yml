@@ -16,18 +16,21 @@ micronaut:
 endpoints:
   health:
     enabled: true
+    sensitive: false
     details-visible: anonymous
     disk-space:
       enabled: true
     jdbc:
       enabled: true
-      sensitive: false
-    beans:
-      enabled: true
-      sensitive: false
-    info:
-      enabled: true
-      sensitive: false
+  beans:
+    enabled: true
+    sensitive: false
+  info:
+    enabled: true
+    sensitive: false
+  flyway:
+    enabled: true
+    sensitive: false
 
 jpa:
   enabled: false
@@ -35,7 +38,7 @@ jpa:
 datasources:
   default:
     db-type: "h2"
-    url: 'jdbc:h2:mem:liquibaseDisabledDb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=TRUE'
+    url: 'jdbc:h2:mem:PUBLIC;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=TRUE'
     username: 'sa'
     password: ''
     dialect: 'H2'
@@ -47,3 +50,7 @@ flyway:
       enabled: true
       locations:
         - classpath:databasemigrations
+
+info:
+  demo:
+    description: "Demo application"
