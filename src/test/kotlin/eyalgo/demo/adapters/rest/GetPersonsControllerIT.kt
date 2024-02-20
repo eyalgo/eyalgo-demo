@@ -4,7 +4,7 @@ import eyalgo.demo.IntegrationTest
 import eyalgo.demo.As
 import eyalgo.demo.adapters.data.exposed.PersonRepositoryImpl
 import eyalgo.demo.domain.model.Person
-import eyalgo.demo.containers.MySQLForTests
+import eyalgo.demo.containers.ContainerMySQL
 import eyalgo.demo.ports.PersonRepository
 import io.kotest.matchers.shouldBe
 import io.micronaut.runtime.server.EmbeddedServer
@@ -20,7 +20,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 @IntegrationTest
-@TestResourcesProperties(providers = [MySQLForTests::class])
+@TestResourcesProperties(providers = [ContainerMySQL::class])
 class GetPersonsControllerIT {
     @Inject
     lateinit var repo: PersonRepository

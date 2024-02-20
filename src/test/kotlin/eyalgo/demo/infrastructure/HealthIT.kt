@@ -1,7 +1,7 @@
 package eyalgo.demo.infrastructure
 
 import eyalgo.demo.IntegrationTest
-import eyalgo.demo.containers.PostgresForTests
+import eyalgo.demo.containers.ContainerPostgres
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.optional.shouldBePresent
 import io.kotest.matchers.shouldBe
@@ -22,7 +22,7 @@ import org.junit.jupiter.api.Test
 
 
 @IntegrationTest
-@TestResourcesProperties(providers = [PostgresForTests::class])
+@TestResourcesProperties(providers = [ContainerPostgres::class])
 class HealthIT {
     @Inject
     private lateinit var server: EmbeddedServer

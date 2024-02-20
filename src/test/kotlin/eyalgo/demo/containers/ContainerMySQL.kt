@@ -6,11 +6,11 @@ import io.micronaut.test.extensions.testresources.TestResourcesPropertyProvider
 import org.testcontainers.containers.MySQLContainer
 
 @ReflectiveAccess
-class MySQLForTests: TestResourcesPropertyProvider, DefaultApplicationContextBuilder() {
+class ContainerMySQL: TestResourcesPropertyProvider, DefaultApplicationContextBuilder() {
     private val mysql = MySQLContainer("mysql:8.0.33")
 
     init {
-        println("=================== MySQLForTests init =================== ")
+        println("=================== ContainerMySQL init =================== ")
 
         if (!mysql.isRunning()) {
             println("mysql is not running, starting it now...")
@@ -19,7 +19,7 @@ class MySQLForTests: TestResourcesPropertyProvider, DefaultApplicationContextBui
     }
 
     override fun provide(testProperties: MutableMap<String, Any>): MutableMap<String, String> {
-        println("=================== MySQLForTests provide =================== ")
+        println("=================== ContainerMySQL provide =================== ")
         return mutableMapOf(
             "datasources.default.url" to mysql.jdbcUrl,
             "datasources.default.username" to mysql.username,
