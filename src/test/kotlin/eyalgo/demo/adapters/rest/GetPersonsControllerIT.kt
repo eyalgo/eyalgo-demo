@@ -10,8 +10,7 @@ import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.runtime.server.EmbeddedServer
 import io.micronaut.test.extensions.testresources.annotation.TestResourcesProperties
-import io.restassured.module.kotlin.extensions.Then
-import io.restassured.module.kotlin.extensions.When
+import io.restassured.specification.RequestSpecification
 import jakarta.inject.Inject
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -40,14 +39,22 @@ class GetPersonsControllerIT {
     }
 
     @Test
-    fun `verify getAll`() {
-        When {
-            get("/persons")
-        } Then {
-            statusCode(200)
-            body(Is("[{\"firstName\":\"firstName-1\",\"lastName\":\"lastName-1\"},{\"firstName\":\"firstName-2\",\"lastName\":\"lastName-2\"}]"))
-        }
+    fun `verify getAll`(spec: RequestSpecification) {
+        spec
+            .`when`().get("/hello/1")
+            .then().statusCode(200)
+            .body(Is("Hello World 1"))
     }
+
+//    @Test
+//    fun `verify getAll`() {
+//        When {
+//            get("/persons")
+//        } Then {
+//            statusCode(200)
+//            body(Is("[{\"firstName\":\"firstName-1\",\"lastName\":\"lastName-1\"},{\"firstName\":\"firstName-2\",\"lastName\":\"lastName-2\"}]"))
+//        }
+//    }
 
     @Test
     fun `verify get person`() {

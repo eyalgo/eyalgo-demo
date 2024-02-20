@@ -112,7 +112,8 @@ dependencies {
 
     // Testing
     testImplementation("io.micronaut:micronaut-http-client:$micronautVersion")
-    testImplementation("io.rest-assured:kotlin-extensions:5.4.0")
+    testImplementation("io.micronaut.test:micronaut-test-rest-assured:3.9.2")
+//    testImplementation("io.rest-assured:kotlin-extensions:5.4.0")
     testRuntimeOnly("junit:junit:4.13.2")
 
     // kotest and mockk
