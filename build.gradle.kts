@@ -94,11 +94,6 @@ dependencies {
     implementation("io.micronaut.micrometer:micronaut-micrometer-registry-prometheus:$micronautMicrometerVersion")
     implementation("io.micronaut:micronaut-management:$micronautVersion")
 
-    // cache
-    val micronautCacheVersion = "3.5.0"
-    implementation("io.micronaut.cache:micronaut-cache-hazelcast:$micronautCacheVersion")
-    implementation("io.micronaut.cache:micronaut-cache-management:$micronautCacheVersion")
-
     // exposed
     // https://github.com/JetBrains/Exposed
     val exposedVersion = "0.47.0"

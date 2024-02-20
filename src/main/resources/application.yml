@@ -74,11 +74,6 @@ flyway:
       locations:
         - classpath:databasemigrations
 
-hazelcast:
-  client:
-    network:
-      addresses: ['121.0.0.1:5701']
-
 info:
   demo:
     description: "Demo application"
