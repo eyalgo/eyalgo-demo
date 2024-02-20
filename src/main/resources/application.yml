@@ -17,6 +17,9 @@ micronaut:
           secret:
             generator:
               secret: "${JWT_GENERATOR_SIGNATURE_SECRET:pleaseChangeThisSecretForANewOne}"
+  caches:
+    persons:
+      charset: UTF-8
 
 endpoints:
   health:
@@ -45,6 +48,9 @@ endpoints:
   loggers:
     enabled: true
     sensitive: false
+  caches:
+    enabled: true
+    sensitive: false
 
 jpa:
   enabled: false
@@ -64,6 +70,11 @@ flyway:
       enabled: true
       locations:
         - classpath:databasemigrations
+
+hazelcast:
+  client:
+    network:
+      addresses: ['121.0.0.1:5701']
 
 info:
   demo:
