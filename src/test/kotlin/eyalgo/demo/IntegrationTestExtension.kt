@@ -1,8 +1,6 @@
 package eyalgo.demo
 
 import io.micronaut.context.ApplicationContext
-import io.micronaut.http.client.HttpClient
-import io.micronaut.http.client.annotation.Client
 import io.micronaut.runtime.server.EmbeddedServer
 import io.micronaut.test.annotation.MicronautTestValue
 import io.micronaut.test.context.TestContext

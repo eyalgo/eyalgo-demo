@@ -22,6 +22,7 @@
 - [Management](https://docs.micronaut.io/latest/guide/#management)
 - [Test Resources](https://micronaut-projects.github.io/micronaut-test-resources/latest/guide/#modules-testcontainers)
   - [Good tutorial](https://guides.micronaut.io/latest/replace-h2-with-real-database-for-testing.html)
+- [REST-assured](https://github.com/rest-assured/rest-assured/wiki/)
 - [Baeldung](https://www.baeldung.com/micronaut)
 
 ## Feature micronaut-aot documentation

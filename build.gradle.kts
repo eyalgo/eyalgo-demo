@@ -116,9 +116,10 @@ dependencies {
     runtimeOnly("org.yaml:snakeyaml:2.0")
 
     // Testing
+    val restAssuredVersion = "5.4.0"
     testImplementation("io.micronaut:micronaut-http-client:$micronautVersion")
-    testImplementation("io.micronaut.test:micronaut-test-rest-assured:3.9.2")
-//    testImplementation("io.rest-assured:kotlin-extensions:5.4.0")
+    testImplementation("io.rest-assured:kotlin-extensions:$restAssuredVersion")
+    testImplementation("io.rest-assured:json-path:$restAssuredVersion")
     testRuntimeOnly("junit:junit:4.13.2")
 
     // kotest and mockk
@@ -161,6 +162,7 @@ micronaut {
         incremental(true)
         annotations("eyalgo.demo.*")
     }
+    ignoredAutomaticDependencies.add("io.micronaut.data:micronaut-data-processor")
     aot {
     // Please review carefully the optimizations enabled below
     // Check https://micronaut-projects.github.io/micronaut-aot/latest/guide/ for more details

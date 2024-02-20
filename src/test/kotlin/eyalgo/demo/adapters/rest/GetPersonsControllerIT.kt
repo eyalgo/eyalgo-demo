@@ -6,11 +6,11 @@ import eyalgo.demo.adapters.data.exposed.PersonRepositoryImpl
 import eyalgo.demo.domain.model.Person
 import eyalgo.demo.infrastructure.MySQLForTests
 import eyalgo.demo.ports.PersonRepository
-import io.micronaut.http.client.HttpClient
-import io.micronaut.http.client.annotation.Client
 import io.micronaut.runtime.server.EmbeddedServer
 import io.micronaut.test.extensions.testresources.annotation.TestResourcesProperties
-import io.restassured.specification.RequestSpecification
+import io.restassured.module.kotlin.extensions.Given
+import io.restassured.module.kotlin.extensions.Then
+import io.restassured.module.kotlin.extensions.When
 import jakarta.inject.Inject
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -26,42 +26,37 @@ class GetPersonsControllerIT {
     @Inject
     private lateinit var server: EmbeddedServer
 
-    @field:Client("/")
-    private lateinit var client: HttpClient
-
     @BeforeEach
     fun setUp() {
-        server.start()
-        client = server.applicationContext.createBean(HttpClient::class.java, server.url)
+        if (!server.isRunning) server.start()
         transaction {
             PersonRepositoryImpl.Persons.deleteAll()
         }
     }
 
     @Test
-    fun `verify getAll`(spec: RequestSpecification) {
-        spec
-            .`when`().get("/hello/1")
-            .then().statusCode(200)
-            .body(Is("Hello World 1"))
+    fun `verify getAll`() {
+        Given {
+            baseUri(server.url.toString())
+        } When {
+            get("/persons")
+        } Then {
+            statusCode(200)
+            body(Is("[{\"firstName\":\"firstName-1\",\"lastName\":\"lastName-1\"},{\"firstName\":\"firstName-2\",\"lastName\":\"lastName-2\"}]"))
+        }
     }
-
-//    @Test
-//    fun `verify getAll`() {
-//        When {
-//            get("/persons")
-//        } Then {
-//            statusCode(200)
-//            body(Is("[{\"firstName\":\"firstName-1\",\"lastName\":\"lastName-1\"},{\"firstName\":\"firstName-2\",\"lastName\":\"lastName-2\"}]"))
-//        }
-//    }
 
     @Test
     fun `verify get person`() {
         val id = repo.createPerson(Person("Eyal", "Golan"))
-
-        val rsp: String = client.toBlocking()
-            .retrieve("/persons/$id")
+        Given {
+            baseUri(server.url.toString())
+        } When {
+            get("/persons/$id")
+        } Then {
+            statusCode(200)
+//            body(Is("{\"firstName\":\"Eyal\",\"lastName\":\"Golan\"}"))
+        }
 
         //private val objectMapper: ObjectMapper
 //        objectMapper.readValue(rsp, PersonDTO::class.java) shouldBe PersonDTO("Eyal", "Golan")
