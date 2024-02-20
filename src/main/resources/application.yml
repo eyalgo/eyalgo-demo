@@ -22,6 +22,9 @@ micronaut:
       charset: UTF-8
 
 endpoints:
+  env:
+    enabled: true
+    sensitive: false
   health:
     enabled: true
     sensitive: false
