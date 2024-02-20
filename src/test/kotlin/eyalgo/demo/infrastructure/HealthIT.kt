@@ -1,11 +1,11 @@
 package eyalgo.demo.infrastructure
 
 import eyalgo.demo.IntegrationTest
+import eyalgo.demo.containers.PostgresForTests
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.optional.shouldBePresent
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.shouldContain
-import io.micronaut.context.ApplicationContext
 import io.micronaut.context.annotation.Property
 import io.micronaut.http.HttpRequest.GET
 import io.micronaut.http.HttpStatus

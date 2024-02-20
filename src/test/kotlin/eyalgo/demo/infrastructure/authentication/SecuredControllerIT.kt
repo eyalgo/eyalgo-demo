@@ -3,7 +3,7 @@ package eyalgo.demo.infrastructure.authentication
 import com.nimbusds.jwt.JWTParser
 import com.nimbusds.jwt.SignedJWT
 import eyalgo.demo.IntegrationTest
-import eyalgo.demo.infrastructure.PostgresForTests
+import eyalgo.demo.containers.PostgresForTests
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.optional.shouldBePresent
 import io.kotest.matchers.shouldBe

@@ -1,7 +1,7 @@
 package eyalgo.demo.adapters.data.joooq
 
 import eyalgo.demo.IntegrationTest
-import eyalgo.demo.infrastructure.PostgresForTests
+import eyalgo.demo.containers.PostgresForTests
 import io.micronaut.test.extensions.testresources.annotation.TestResourcesProperties
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test

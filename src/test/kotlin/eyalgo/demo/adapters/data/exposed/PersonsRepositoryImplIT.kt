@@ -2,7 +2,7 @@ package eyalgo.demo.adapters.data.exposed
 
 import eyalgo.demo.IntegrationTest
 import eyalgo.demo.domain.model.Person
-import eyalgo.demo.infrastructure.PostgresForTests
+import eyalgo.demo.containers.PostgresForTests
 import eyalgo.demo.ports.PersonRepository
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.shouldBe

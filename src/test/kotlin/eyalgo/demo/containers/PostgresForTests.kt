@@ -1,4 +1,4 @@
-package eyalgo.demo.infrastructure
+package eyalgo.demo.containers
 
 import io.micronaut.context.DefaultApplicationContextBuilder
 import io.micronaut.core.annotation.ReflectiveAccess

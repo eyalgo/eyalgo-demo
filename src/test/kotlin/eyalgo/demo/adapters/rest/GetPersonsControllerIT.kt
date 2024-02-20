@@ -4,7 +4,7 @@ import eyalgo.demo.IntegrationTest
 import eyalgo.demo.As
 import eyalgo.demo.adapters.data.exposed.PersonRepositoryImpl
 import eyalgo.demo.domain.model.Person
-import eyalgo.demo.infrastructure.MySQLForTests
+import eyalgo.demo.containers.MySQLForTests
 import eyalgo.demo.ports.PersonRepository
 import io.kotest.matchers.shouldBe
 import io.micronaut.runtime.server.EmbeddedServer
