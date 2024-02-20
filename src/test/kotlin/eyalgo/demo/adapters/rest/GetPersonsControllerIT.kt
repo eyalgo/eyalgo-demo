@@ -1,13 +1,15 @@
 package eyalgo.demo.adapters.rest
 
 import eyalgo.demo.IntegrationTest
-import eyalgo.demo.matchers.Is
+import eyalgo.demo.As
 import eyalgo.demo.adapters.data.exposed.PersonRepositoryImpl
 import eyalgo.demo.domain.model.Person
 import eyalgo.demo.infrastructure.MySQLForTests
 import eyalgo.demo.ports.PersonRepository
+import io.kotest.matchers.shouldBe
 import io.micronaut.runtime.server.EmbeddedServer
 import io.micronaut.test.extensions.testresources.annotation.TestResourcesProperties
+import io.restassured.module.kotlin.extensions.Extract
 import io.restassured.module.kotlin.extensions.Given
 import io.restassured.module.kotlin.extensions.Then
 import io.restassured.module.kotlin.extensions.When
@@ -42,23 +44,27 @@ class GetPersonsControllerIT {
             get("/persons")
         } Then {
             statusCode(200)
-            body(Is("[{\"firstName\":\"firstName-1\",\"lastName\":\"lastName-1\"},{\"firstName\":\"firstName-2\",\"lastName\":\"lastName-2\"}]"))
-        }
+        } Extract {
+            body() As Array<PersonDTO>::class.java
+        } shouldBe arrayOf(
+            PersonDTO("firstName-1", "lastName-1"),
+            PersonDTO("firstName-2", "lastName-2")
+        )
     }
 
     @Test
     fun `verify get person`() {
-        val id = repo.createPerson(Person("Eyal", "Golan"))
+        val id: Long = repo.createPerson(Person("Eyal", "Golan"))
+
         Given {
             baseUri(server.url.toString())
         } When {
             get("/persons/$id")
         } Then {
             statusCode(200)
-//            body(Is("{\"firstName\":\"Eyal\",\"lastName\":\"Golan\"}"))
-        }
-
-        //private val objectMapper: ObjectMapper
-//        objectMapper.readValue(rsp, PersonDTO::class.java) shouldBe PersonDTO("Eyal", "Golan")
+            contentType("application/json")
+        } Extract {
+            body() As PersonDTO::class.java
+        } shouldBe PersonDTO("Eyal", "Golan")
     }
 }
