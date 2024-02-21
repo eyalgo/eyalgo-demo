@@ -122,6 +122,7 @@ dependencies {
     testImplementation("io.rest-assured:json-path:$restAssuredVersion")
     testRuntimeOnly("junit:junit:4.13.2")
     testImplementation("io.github.hakky54:logcaptor:2.9.2")
+    testImplementation("org.awaitility:awaitility-kotlin:4.2.0")
 
     // kotest and mockk
     testImplementation("io.kotest:kotest-assertions-core:5.8.0")
