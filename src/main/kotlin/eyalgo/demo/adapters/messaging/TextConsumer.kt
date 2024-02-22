@@ -12,7 +12,10 @@ import org.slf4j.LoggerFactory
 @JMSListener(CONNECTION_FACTORY_BEAN_NAME)
 @Requires(env = ["messaging"])
 class TextConsumer {
-    private val log = LoggerFactory.getLogger(TextConsumer::class.java)
+    companion object {
+        private val log = LoggerFactory.getLogger(TextConsumer::class.java.name)
+    }
+
     @Queue(value = "queue_text")
     fun receive(@MessageBody body: String) {
         log.info("receive: $body")

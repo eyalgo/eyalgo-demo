@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory
 @Singleton
 class SampleJob {
     companion object {
-        private val log = LoggerFactory.getLogger(SampleJob::class.java)
+        private val log = LoggerFactory.getLogger(SampleJob::class.java.name)
     }
 
     @Scheduled(fixedDelay = "9s", initialDelay = "5s")

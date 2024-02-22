@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory
 @Singleton
 class GetPersonsService(private val repository: PersonRepository) {
     companion object {
-        private val log = LoggerFactory.getLogger(GetPersonsService::class.java)
+        private val log = LoggerFactory.getLogger(GetPersonsService::class.java.name)
     }
 
     fun getPersons(): List<Person> {
