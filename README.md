@@ -1,3 +1,9 @@
+# Micronaut Kotlin Demo
+
+An example project using Micronaut and Kotlin
+
+## Design Concepts
+
 ## Micronaut 4.2.4 Documentation
 
 - [User Guide](https://docs.micronaut.io/4.2.4/guide/index.html)
@@ -56,8 +62,8 @@
 ## Application
 
 - monitoring and health check
-  - [Micronaut Micrometer](https://micronaut-projects.github.io/micronaut-micrometer/latest/guide/)
-- Security, roles, and permissions
+  - [Micronaut Micrometer](https://micronaut-projects.github.io/micronaut-micrometer/latest/guide/) ✅
+- Security, roles, and permissions ✅
   - [JWT](https://guides.micronaut.io/latest/micronaut-security-jwt-gradle-kotlin.html)
   - [Micronaut Security](https://micronaut-projects.github.io/micronaut-security/latest/guide/index.html#custom)
 
