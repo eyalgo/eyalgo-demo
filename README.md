@@ -73,7 +73,9 @@
 
 ---
 
-- logging
+- logging ✅
 - Either
 - Messaging
+  - [Example that worked](https://github.com/ricall/micronaut-jms-application/)
+- Scheduling ✅
 - Cache

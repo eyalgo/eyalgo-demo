@@ -32,6 +32,7 @@ application {
 
 java {
     sourceCompatibility = JavaVersion.toVersion("17")
+    targetCompatibility = JavaVersion.toVersion("17")
 }
 
 idea {
@@ -51,14 +52,19 @@ dependencies {
 
     // micronaut
     val micronautVersion = "3.8.7"
-    ksp("io.micronaut.serde:micronaut-serde-processor:1.5.2")
     implementation("io.micronaut:micronaut-management:$micronautVersion")
     implementation("io.micronaut.kotlin:micronaut-kotlin-runtime:3.2.2")
+    annotationProcessor("io.micronaut:micronaut-inject-java:$micronautVersion")
+    compileOnly("io.micronaut:micronaut-inject-java:$micronautVersion")
+
+    // messaging
+    implementation("io.micronaut.jms:micronaut-jms-activemq-classic:2.2.0")
 
     // micronaut serialization
-    val micronautSerdeVersion = "1.5.2"
+    val micronautSerdeVersion = "2.8.1"
+    ksp("io.micronaut.serde:micronaut-serde-processor:$micronautSerdeVersion")
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor:$micronautSerdeVersion")
-    implementation("io.micronaut.serde:micronaut-serde-jsonp:$micronautSerdeVersion")
+    implementation("io.micronaut.serde:micronaut-serde-jackson:$micronautSerdeVersion")
 
     // database migration
     implementation("io.micronaut.flyway:micronaut-flyway:5.5.0") {
@@ -116,6 +122,8 @@ dependencies {
     runtimeOnly("org.yaml:snakeyaml:2.0")
 
     // Testing
+    testImplementation("io.micronaut:micronaut-inject-java:$micronautVersion")
+
     val restAssuredVersion = "5.4.0"
     testImplementation("io.micronaut:micronaut-http-client:$micronautVersion")
     testImplementation("io.rest-assured:kotlin-extensions:$restAssuredVersion")
