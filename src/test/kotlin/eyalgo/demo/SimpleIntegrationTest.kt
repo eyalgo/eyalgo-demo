@@ -4,10 +4,9 @@ import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
 
-
 @TestInstance(PER_CLASS)
 @MicronautTest(
-    startApplication = false,
-    environments = ["exposed", "integrationTest"]
+//    startApplication = false,
+//    environments = ["integrationTest"]
 )
-annotation class IntegrationTest
+annotation class SimpleIntegrationTest

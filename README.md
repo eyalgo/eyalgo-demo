@@ -8,7 +8,7 @@ An example project using Micronaut and Kotlin
 
 - [User Guide](https://docs.micronaut.io/4.2.4/guide/index.html)
 - [API Reference](https://docs.micronaut.io/4.2.4/api/index.html)
-- [Configuration Reference](https://docs.micronaut.io/4.2.4/guide/configurationreference.html)
+- [Configuration Reference](https://docs.micronaut.io/4.2.4/guide/configurationreference.html) (_application.yml_)
 - [Micronaut Guides](https://guides.micronaut.io/index.html)
 
 ---
@@ -23,7 +23,7 @@ An example project using Micronaut and Kotlin
 - [Micronaut Test](https://micronaut-projects.github.io/micronaut-test/latest/guide/)
 - [Micronaut for Spring](https://micronaut-projects.github.io/micronaut-spring/latest/guide/)
 - [Micronaut Scope Types](https://guides.micronaut.io/latest/micronaut-scope-types-gradle-java.html)
-- [Configuration](https://guides.micronaut.io/latest/micronaut-configuration-gradle-kotlin.html)
+- [Configuration](https://guides.micronaut.io/latest/micronaut-configuration-gradle-kotlin.html) (@Configuration and @ConfigurationBuilder)
 - [Annotations](https://www.baeldung.com/kotlin/annotations)
 - [Management](https://docs.micronaut.io/latest/guide/#management)
 - [Test Resources](https://micronaut-projects.github.io/micronaut-test-resources/latest/guide/#modules-testcontainers)

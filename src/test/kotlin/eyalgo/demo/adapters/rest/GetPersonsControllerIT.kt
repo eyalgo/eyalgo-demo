@@ -1,6 +1,6 @@
 package eyalgo.demo.adapters.rest
 
-import eyalgo.demo.IntegrationTest
+import eyalgo.demo.ExposedIntegrationTest
 import eyalgo.demo.As
 import eyalgo.demo.adapters.data.exposed.PersonRepositoryImpl
 import eyalgo.demo.domain.model.Person
@@ -19,7 +19,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-@IntegrationTest
+@ExposedIntegrationTest
 @TestResourcesProperties(providers = [ContainerMySQL::class])
 class GetPersonsControllerIT {
     @Inject

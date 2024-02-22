@@ -1,12 +1,12 @@
 package eyalgo.demo.adapters.data.joooq
 
-import eyalgo.demo.IntegrationTest
+import eyalgo.demo.ExposedIntegrationTest
 import eyalgo.demo.containers.ContainerPostgres
 import io.micronaut.test.extensions.testresources.annotation.TestResourcesProperties
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
-@IntegrationTest
+@ExposedIntegrationTest
 @TestResourcesProperties(providers = [ContainerPostgres::class])
 class PersonRepositoryImplIT {
 

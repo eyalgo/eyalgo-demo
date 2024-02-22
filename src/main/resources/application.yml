@@ -82,3 +82,8 @@ flyway:
 info:
   demo:
     description: "Demo application"
+
+solace:
+  url: "amqp://localhost:5672"
+  user: "admin"
+  password: "admin"
