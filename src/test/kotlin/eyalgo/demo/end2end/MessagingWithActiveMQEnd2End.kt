@@ -23,8 +23,10 @@ import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
     environments = ["messaging"]
 )
 @TestResourcesProperties(providers = [ContainerActiveMQ::class])
-class MessagingEnd2End {
-    private val logCaptor: LogCaptor = LogCaptor.forClass(TextConsumer::class.java)
+class MessagingWithActiveMQEnd2End {
+    companion object {
+        private val logCaptor: LogCaptor = LogCaptor.forClass(TextConsumer::class.java)
+    }
 
     @Inject
     private lateinit var context: ApplicationContext

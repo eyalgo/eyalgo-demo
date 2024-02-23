@@ -20,7 +20,7 @@ class ContainerActiveMQ: TestResourcesPropertyProvider {
         println("=================== ContainerActiveMQ init =================== ")
 
         if (!broker.isRunning()) {
-            println("mysql is not running, starting it now...")
+            println("activemq is not running, starting it now...")
             broker.start()
         }
     }
@@ -28,9 +28,6 @@ class ContainerActiveMQ: TestResourcesPropertyProvider {
     override fun provide(testProperties: MutableMap<String, Any>?): MutableMap<String, String> {
         println("=================== ContainerActiveMQ provide =================== ")
         return mutableMapOf(
-            "message-broker.url" to "tcp://${broker.host}:${broker.getMappedPort(61616)}",
-            "message-broker.user" to "user",
-            "message-broker.password" to "password",
             "micronaut.jms.activemq.classic.connection-string" to "tcp://${broker.host}:${broker.getMappedPort(61616)}"
         )
     }
