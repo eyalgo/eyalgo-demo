@@ -1,0 +1,15 @@
+datasources:
+  default:
+    db-type: "postgres"
+    url: 'tcp://'
+    username: 'admin'
+    password: 'admin'
+    dialect: 'POSTGRES'
+    driverClassName: 'org.postgresql.Driver'
+
+flyway:
+  datasources:
+    default:
+      enabled: true
+      locations:
+        - classpath:databasemigrations/postgres

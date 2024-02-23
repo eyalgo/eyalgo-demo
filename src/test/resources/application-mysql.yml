@@ -1,0 +1,15 @@
+datasources:
+  default:
+    db-type: "mysql"
+    url: 'tcp://'
+    username: 'admin'
+    password: 'admin'
+    dialect: 'MYSQL'
+    driverClassName: 'com.mysql.cj.jdbc.Driver'
+
+flyway:
+  datasources:
+    default:
+      enabled: true
+      locations:
+        - classpath:databasemigrations/mysql
