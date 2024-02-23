@@ -52,6 +52,7 @@ An example project using Micronaut and Kotlin
   - exposed ❓ (✅)
     - [baeldung](https://www.baeldung.com/kotlin/exposed-persistence)
   - liquibase ✅
+  - Flyway ✅
 - environments (profiles) ✅
 - Testcontainers ✅
   - Need to optimise startup and more ✅
@@ -64,15 +65,14 @@ An example project using Micronaut and Kotlin
 - monitoring and health check
   - [Micronaut Micrometer](https://micronaut-projects.github.io/micronaut-micrometer/latest/guide/) ✅
 - Security, roles, and permissions ✅
-  - [JWT](https://guides.micronaut.io/latest/micronaut-security-jwt-gradle-kotlin.html)
-  - [Micronaut Security](https://micronaut-projects.github.io/micronaut-security/latest/guide/index.html#custom)
+  - [JWT](https://guides.micronaut.io/latest/micronaut-security-jwt-gradle-kotlin.html) ✅
+  - [Micronaut Security](https://micronaut-projects.github.io/micronaut-security/latest/guide/index.html#custom) ✅
 
 ---
 
 - Check [Micronaut Control Panel](https://micronaut-projects.github.io/micronaut-control-panel/latest/guide/)
-- Check [TOML](https://toml.io/en/)
+- Check [TOML](https://toml.io/en/) - nope
 - Check using [GraalVM](https://guides.micronaut.io/latest/creating-your-first-micronaut-app-maven-kotlin.html)
-- [Flyway](https://micronaut-projects.github.io/micronaut-flyway/latest/guide/) ✅
 - Check reactive mode
 - [Inversion of Control](https://docs.micronaut.io/latest/guide/#beans)
 - [Configuration](https://docs.micronaut.io/latest/guide/#configuration)
@@ -85,3 +85,4 @@ An example project using Micronaut and Kotlin
   - [Example that worked](https://github.com/ricall/micronaut-jms-application/)
 - Scheduling ✅
 - Cache
+- Gradle plugin

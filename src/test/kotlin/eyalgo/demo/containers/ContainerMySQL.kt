@@ -21,10 +21,12 @@ class ContainerMySQL: TestResourcesPropertyProvider, DefaultApplicationContextBu
     override fun provide(testProperties: MutableMap<String, Any>): MutableMap<String, String> {
         println("=================== ContainerMySQL provide =================== ")
         return mutableMapOf(
-            "datasources.default.url" to mysql.jdbcUrl,
-            "datasources.default.username" to mysql.username,
-            "datasources.default.password" to mysql.password,
-            "datasources.default.driverClassName" to "com.mysql.cj.jdbc.Driver"
+            "flyway.datasources.mysql.enabled" to "true",
+            "datasources.mysql.url" to mysql.jdbcUrl,
+            "datasources.mysql.username" to mysql.username,
+            "datasources.mysql.password" to mysql.password,
+            "datasources.mysql.dialect" to "MYSQL",
+            "datasources.mysql.driverClassName" to "com.mysql.cj.jdbc.Driver"
         )
     }
 }

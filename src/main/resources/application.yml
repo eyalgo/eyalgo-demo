@@ -75,9 +75,17 @@ datasources:
 flyway:
   datasources:
     default:
-      enabled: true
+      enabled: false
       locations:
         - classpath:databasemigrations
+    mysql:
+        enabled: false
+        locations:
+          - classpath:databasemigrations/mysql
+    postgres:
+        enabled: false
+        locations:
+          - classpath:databasemigrations/postgres
 
 info:
   demo:

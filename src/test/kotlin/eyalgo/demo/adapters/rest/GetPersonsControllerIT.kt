@@ -1,6 +1,6 @@
 package eyalgo.demo.adapters.rest
 
-import eyalgo.demo.ExposedIntegrationTest
+import eyalgo.demo.teststrategies.ExposedIntegrationTest
 import eyalgo.demo.As
 import eyalgo.demo.adapters.data.exposed.PersonRepositoryImpl
 import eyalgo.demo.domain.model.Person

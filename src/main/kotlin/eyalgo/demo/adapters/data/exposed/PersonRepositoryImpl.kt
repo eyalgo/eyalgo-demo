@@ -4,7 +4,6 @@ import eyalgo.demo.domain.model.Person
 import eyalgo.demo.ports.PersonRepository
 import io.micronaut.context.annotation.Requires
 import jakarta.inject.Singleton
-import kotlin.random.Random
 import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.StdOutSqlLogger
 import org.jetbrains.exposed.sql.Table
@@ -18,22 +17,20 @@ import org.jetbrains.exposed.sql.transactions.transaction
 class PersonRepositoryImpl: PersonRepository {
 
     object Persons : Table("person") {
-        // TODO how to use @AutoPopulated ?
-        val id: Column<Long> = long("id")
+        val id: Column<Long> = long("id").autoIncrement()
         val firstName: Column<String> = varchar("first_name", length = 100)
         val lastName: Column<String> = varchar("last_name", length = 100)
+
+        override val primaryKey = PrimaryKey(id)
     }
 
-    override fun createPerson(person: Person): Long {
-        return transaction {
+    override fun createPerson(person: Person): Long = transaction {
             addLogger(StdOutSqlLogger)
             Persons.insert {
-                it[id] = Random(100000L).nextLong()
                 it[firstName] = person.firstName
                 it[lastName] = person.lastName
             } get Persons.id
         }
-    }
 
     override fun getPerson(id: Long): Person = transaction {
         addLogger(StdOutSqlLogger)
@@ -41,5 +38,10 @@ class PersonRepositoryImpl: PersonRepository {
             .where { Persons.id eq id }
             .map { Person(it[Persons.firstName], it[Persons.lastName]) }
             .single()
+    }
+
+    override fun getPersons(): List<Person> = transaction {
+        Persons.selectAll()
+            .map { Person(it[Persons.firstName], it[Persons.lastName]) }
     }
 }
