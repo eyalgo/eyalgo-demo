@@ -4,11 +4,11 @@ import eyalgo.demo.domain.model.Person
 import eyalgo.demo.ports.PersonRepository
 import io.micronaut.context.annotation.Requires
 import jakarta.inject.Singleton
+import org.jetbrains.exposed.dao.id.LongIdTable
 import org.jetbrains.exposed.sql.Column
 import org.jetbrains.exposed.sql.StdOutSqlLogger
-import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.addLogger
-import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.insertAndGetId
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 
@@ -16,20 +16,17 @@ import org.jetbrains.exposed.sql.transactions.transaction
 @Requires(env = ["exposed"])
 class PersonRepositoryImpl: PersonRepository {
 
-    object Persons : Table("person") {
-        val id: Column<Long> = long("id").autoIncrement()
+    object Persons : LongIdTable("person") {
         val firstName: Column<String> = varchar("first_name", length = 100)
         val lastName: Column<String> = varchar("last_name", length = 100)
-
-        override val primaryKey = PrimaryKey(id)
     }
 
     override fun createPerson(person: Person): Long = transaction {
             addLogger(StdOutSqlLogger)
-            Persons.insert {
+            Persons.insertAndGetId {
                 it[firstName] = person.firstName
                 it[lastName] = person.lastName
-            } get Persons.id
+            }.value
         }
 
     override fun getPerson(id: Long): Person = transaction {
