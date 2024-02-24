@@ -9,6 +9,6 @@ import org.junit.jupiter.api.extension.ExtendWith
 @ExtendWith(ExposedTestExtension::class)
 @MicronautTest(
     startApplication = false,
-    environments = ["exposed", "integrationTest", "mysql"]
+    environments = ["exposed", "integrationTest", "postgres"]
 )
 annotation class ExposedIntegrationTest

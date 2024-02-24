@@ -4,7 +4,7 @@ import eyalgo.demo.teststrategies.ExposedIntegrationTest
 import eyalgo.demo.As
 import eyalgo.demo.adapters.data.exposed.PersonRepositoryImpl
 import eyalgo.demo.domain.model.Person
-import eyalgo.demo.containers.ContainerMySQL
+import eyalgo.demo.containers.ContainerPostgres
 import eyalgo.demo.ports.PersonRepository
 import io.kotest.matchers.shouldBe
 import io.micronaut.runtime.server.EmbeddedServer
@@ -20,7 +20,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 @ExposedIntegrationTest
-@TestResourcesProperties(providers = [ContainerMySQL::class])
+@TestResourcesProperties(providers = [ContainerPostgres::class])
 class GetPersonsControllerIT {
     @Inject
     lateinit var repo: PersonRepository

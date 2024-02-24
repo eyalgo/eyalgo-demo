@@ -1,6 +1,6 @@
 package eyalgo.demo.adapters.data.exposed
 
-import eyalgo.demo.containers.ContainerMySQL
+import eyalgo.demo.containers.ContainerPostgres
 import eyalgo.demo.teststrategies.ExposedIntegrationTest
 import eyalgo.demo.domain.model.Person
 import eyalgo.demo.ports.PersonRepository
@@ -13,7 +13,7 @@ import jakarta.inject.Inject
 import org.junit.jupiter.api.Test
 
 @ExposedIntegrationTest
-@TestResourcesProperties(providers = [ContainerMySQL::class])
+@TestResourcesProperties(providers = [ContainerPostgres::class])
 class PersonsRepositoryImplIT {
     @Inject
     lateinit var repo: PersonRepository
