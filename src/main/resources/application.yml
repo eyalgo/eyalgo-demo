@@ -63,30 +63,6 @@ endpoints:
 jpa:
   enabled: false
 
-#datasources:
-#  default:
-#    db-type: "h2"
-#    url: 'jdbc:h2:mem:PUBLIC;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=TRUE'
-#    username: 'sa'
-#    password: ''
-#    dialect: 'H2'
-#    driverClassName: 'org.h2.Driver'
-#
-#flyway:
-#  datasources:
-#    default:
-#      enabled: false
-#      locations:
-#        - classpath:databasemigrations
-#    mysql:
-#        enabled: false
-#        locations:
-#          - classpath:databasemigrations/mysql
-#    postgres:
-#        enabled: false
-#        locations:
-#          - classpath:databasemigrations/postgres
-
 info:
   demo:
     description: "Demo application"
