@@ -11,13 +11,13 @@ import org.slf4j.LoggerFactory
 @Infrastructure
 @JMSListener(CONNECTION_FACTORY_BEAN_NAME)
 @Requires(env = ["messaging"])
-class TextConsumer {
+class GuestConsumer {
     companion object {
-        private val log = LoggerFactory.getLogger(TextConsumer::class.java.name)
+        private val log = LoggerFactory.getLogger(GuestConsumer::class.java.name)
     }
 
-    @Queue(value = "queue_text")
-    fun receive(@MessageBody body: String) {
-        log.info("receive: $body")
+    @Queue(value = "guests")
+    fun receive(@MessageBody guest: GuestCreateMessage) {
+        log.info("receive: $guest")
     }
 }

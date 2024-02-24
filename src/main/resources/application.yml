@@ -10,7 +10,7 @@ micronaut:
       web:
         enabled: true
   caches:
-    persons:
+    guests:
       charset: UTF-8
   security:
     authentication: bearer
