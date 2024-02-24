@@ -2,8 +2,7 @@ package eyalgo.demo.infrastructure.authentication
 
 import com.nimbusds.jwt.JWTParser
 import com.nimbusds.jwt.SignedJWT
-import eyalgo.demo.teststrategies.ExposedIntegrationTest
-import eyalgo.demo.containers.ContainerPostgres
+import eyalgo.demo.SimpleIntegrationTest
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.optional.shouldBePresent
 import io.kotest.matchers.shouldBe
@@ -22,13 +21,11 @@ import io.micronaut.http.client.exceptions.HttpClientResponseException
 import io.micronaut.runtime.server.EmbeddedServer
 import io.micronaut.security.authentication.UsernamePasswordCredentials
 import io.micronaut.security.token.render.BearerAccessRefreshToken
-import io.micronaut.test.extensions.testresources.annotation.TestResourcesProperties
 import jakarta.inject.Inject
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
-@ExposedIntegrationTest
-@TestResourcesProperties(providers = [ContainerPostgres::class])
+@SimpleIntegrationTest
 class SecuredControllerIT {
 
     @field:Client("/")

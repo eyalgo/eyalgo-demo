@@ -1,7 +1,6 @@
 package eyalgo.demo.infrastructure
 
-import eyalgo.demo.teststrategies.ExposedIntegrationTest
-import eyalgo.demo.containers.ContainerPostgres
+import eyalgo.demo.SimpleIntegrationTest
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.optional.shouldBePresent
 import io.kotest.matchers.shouldBe
@@ -15,14 +14,12 @@ import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
 import io.micronaut.http.client.exceptions.HttpClientResponseException
 import io.micronaut.runtime.server.EmbeddedServer
-import io.micronaut.test.extensions.testresources.annotation.TestResourcesProperties
 import jakarta.inject.Inject
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 
-@ExposedIntegrationTest
-@TestResourcesProperties(providers = [ContainerPostgres::class])
+@SimpleIntegrationTest
 class HealthIT {
     @Inject
     private lateinit var server: EmbeddedServer
