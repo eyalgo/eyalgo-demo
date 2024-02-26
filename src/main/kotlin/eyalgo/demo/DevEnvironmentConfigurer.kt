@@ -7,6 +7,6 @@ import io.micronaut.context.annotation.ContextConfigurer
 @ContextConfigurer
 class DevEnvironmentConfigurer: ApplicationContextConfigurer {
     override fun configure(builder: ApplicationContextBuilder) {
-        builder.defaultEnvironments("exposed", "dev")
+        builder.defaultEnvironments("exposed", "dev", "messaging")
     }
 }

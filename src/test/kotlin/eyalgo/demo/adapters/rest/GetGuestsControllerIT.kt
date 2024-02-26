@@ -14,8 +14,6 @@ import io.restassured.module.kotlin.extensions.Given
 import io.restassured.module.kotlin.extensions.Then
 import io.restassured.module.kotlin.extensions.When
 import jakarta.inject.Inject
-import org.jetbrains.exposed.sql.deleteAll
-import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -31,9 +29,6 @@ class GetGuestsControllerIT {
     @BeforeEach
     fun setUp() {
         if (!server.isRunning) server.start()
-        transaction {
-            Guests.deleteAll()
-        }
     }
 
     @Test
