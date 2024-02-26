@@ -16,5 +16,5 @@ class GuestConsumer(private val service: CreateGuestService) {
 
     @Queue(value = "guests")
     fun receive(@MessageBody guestMessage: GuestCreateMessage) =
-        service.createGuest(Guest(guestMessage.firstName, guestMessage.lastName))
+        service.createGuest(guestMessage.messageId, Guest(guestMessage.firstName, guestMessage.lastName))
 }

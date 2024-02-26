@@ -4,10 +4,10 @@ import eyalgo.demo.domain.model.Guest
 import eyalgo.demo.ports.GuestsRepository
 import io.micronaut.context.annotation.Requires
 import jakarta.inject.Singleton
-import org.jetbrains.exposed.dao.id.LongIdTable
-import org.jetbrains.exposed.sql.Column
+import java.util.UUID
 import org.jetbrains.exposed.sql.StdOutSqlLogger
 import org.jetbrains.exposed.sql.addLogger
+import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.insertAndGetId
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -16,13 +16,19 @@ import org.jetbrains.exposed.sql.transactions.transaction
 @Requires(env = ["exposed"])
 class GuestsRepositoryImpl: GuestsRepository {
 
-    override fun createGuest(guest: Guest): Long = transaction {
+    override fun createGuest(messageId: UUID, guest: Guest): Long = transaction {
             addLogger(StdOutSqlLogger)
-            Guests.insertAndGetId {
-                it[firstName] = guest.firstName
-                it[lastName] = guest.lastName
-            }.value
+        val guestId = Guests.insertAndGetId {
+            it[firstName] = guest.firstName
+            it[lastName] = guest.lastName
+        }.value
+
+        MessageIdToGuestId.insert {
+            it[this.messageId] = messageId
+            it[this.guestId] = guestId
         }
+        guestId
+    }
 
     override fun getGuest(id: Long): Guest = transaction {
         addLogger(StdOutSqlLogger)

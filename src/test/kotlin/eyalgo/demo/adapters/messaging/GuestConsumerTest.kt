@@ -14,8 +14,9 @@ class GuestConsumerTest {
 
     @Test
     fun `verify call to the service`() {
-        val guestMessage = GuestCreateMessage(randomUUID(), "firstName", "lastName")
+        val messageId = randomUUID()
+        val guestMessage = GuestCreateMessage(messageId, "firstName", "lastName")
         consumer.receive(guestMessage)
-        verify { service.createGuest(Guest(guestMessage.firstName, guestMessage.lastName)) }
+        verify { service.createGuest(messageId, Guest(guestMessage.firstName, guestMessage.lastName)) }
     }
 }

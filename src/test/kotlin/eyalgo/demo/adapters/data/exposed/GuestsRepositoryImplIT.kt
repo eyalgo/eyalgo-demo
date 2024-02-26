@@ -8,6 +8,9 @@ import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.shouldBe
 import io.micronaut.test.extensions.testresources.annotation.TestResourcesProperties
 import jakarta.inject.Inject
+import java.util.UUID.randomUUID
+import org.jetbrains.exposed.sql.selectAll
+import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.Test
 
 @ExposedIntegrationTest
@@ -19,9 +22,24 @@ class GuestsRepositoryImplIT {
     @Test
     fun `create and get a guest`() {
         val guest = Guest("Eyal", "Golan")
-        val id = repo.createGuest(guest)
+        val messageId = randomUUID()
+        val id = repo.createGuest(messageId, guest)
 
         repo.getGuest(id) shouldBe guest
+
+        var guestFromDb: Guest? = null
+        transaction {
+            val mappedGuestId = MessageIdToGuestId.selectAll()
+                .where { MessageIdToGuestId.messageId eq messageId }
+                .map { it[MessageIdToGuestId.guestId] }
+                .single()
+
+            guestFromDb = Guests.selectAll()
+                .where { Guests.id eq mappedGuestId }
+                .map { Guest(it[Guests.firstName], it[Guests.lastName]) }
+                .single()
+        }
+        guestFromDb shouldBe guest
     }
 
     @Test
@@ -30,9 +48,9 @@ class GuestsRepositoryImplIT {
         val guest2 = Guest("f2", "l2")
         val guest3 = Guest("f3", "l3")
 
-        repo.createGuest(guest1)
-        repo.createGuest(guest2)
-        repo.createGuest(guest3)
+        repo.createGuest(randomUUID(), guest1)
+        repo.createGuest(randomUUID(), guest2)
+        repo.createGuest(randomUUID(), guest3)
 
         repo.getGuests() shouldContainAll listOf(guest1, guest2, guest3)
     }

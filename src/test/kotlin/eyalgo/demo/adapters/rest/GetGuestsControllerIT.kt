@@ -14,6 +14,7 @@ import io.restassured.module.kotlin.extensions.Given
 import io.restassured.module.kotlin.extensions.Then
 import io.restassured.module.kotlin.extensions.When
 import jakarta.inject.Inject
+import java.util.UUID.randomUUID
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -49,7 +50,7 @@ class GetGuestsControllerIT {
 
     @Test
     fun `verify get guest`() {
-        val id: Long = repo.createGuest(Guest("Eyal", "Golan"))
+        val id: Long = repo.createGuest(randomUUID(), Guest("Eyal", "Golan"))
 
         Given {
             baseUri(server.url.toString())
