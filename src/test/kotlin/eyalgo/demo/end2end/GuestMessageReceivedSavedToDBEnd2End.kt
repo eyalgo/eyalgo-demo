@@ -2,8 +2,10 @@ package eyalgo.demo.end2end
 
 import eyalgo.demo.adapters.messaging.GuestCreateMessage
 import eyalgo.demo.containers.ContainerActiveMQ
+import eyalgo.demo.containers.ContainerMySQL
 import eyalgo.demo.domain.model.Guest
 import eyalgo.demo.ports.GuestsRepository
+import eyalgo.demo.teststrategies.ExposedTestExtension
 import io.kotest.matchers.collections.shouldContain
 import io.micronaut.context.annotation.Requires
 import io.micronaut.jms.activemq.classic.configuration.ActiveMqClassicConfiguration.CONNECTION_FACTORY_BEAN_NAME
@@ -21,13 +23,15 @@ import org.awaitility.kotlin.untilAsserted
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
+import org.junit.jupiter.api.extension.ExtendWith
 
 @TestInstance(PER_CLASS)
+@ExtendWith(ExposedTestExtension::class)
 @MicronautTest(
     startApplication = false,
-    environments = ["exposed", "end2endTest", "h2", "messaging"]
+    environments = ["exposed", "end2endTest", "mysql", "messaging"]
 )
-@TestResourcesProperties(providers = [ContainerActiveMQ::class])
+@TestResourcesProperties(providers = [ContainerActiveMQ::class, ContainerMySQL::class])
 class GuestMessageReceivedSavedToDBEnd2End {
     @Inject
     private lateinit var guestsProducer: GuestsProducer
