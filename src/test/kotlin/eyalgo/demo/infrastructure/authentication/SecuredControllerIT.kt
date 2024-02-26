@@ -21,11 +21,18 @@ import io.micronaut.http.client.exceptions.HttpClientResponseException
 import io.micronaut.runtime.server.EmbeddedServer
 import io.micronaut.security.authentication.UsernamePasswordCredentials
 import io.micronaut.security.token.render.BearerAccessRefreshToken
+import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import jakarta.inject.Inject
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
 
-@SimpleIntegrationTest
+@TestInstance(PER_CLASS)
+@MicronautTest(
+    startApplication = false,
+    environments = ["integrationTest", "secured"]
+)
 class SecuredControllerIT {
 
     @field:Client("/")

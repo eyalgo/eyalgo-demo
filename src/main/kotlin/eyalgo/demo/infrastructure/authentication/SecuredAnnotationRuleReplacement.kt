@@ -1,6 +1,7 @@
 package eyalgo.demo.infrastructure.authentication
 
 import io.micronaut.context.annotation.Replaces
+import io.micronaut.context.annotation.Requires
 import io.micronaut.http.HttpAttributes
 import io.micronaut.http.HttpRequest
 import io.micronaut.security.annotation.Secured
@@ -17,7 +18,8 @@ import reactor.core.publisher.Mono
 
 @Replaces(SecuredAnnotationRule::class)
 @Singleton
-class SecuredAnnotationRuleReplacement(rolesFinder: RolesFinder): SecuredAnnotationRule(rolesFinder){
+@Requires(env =["secured"])
+class SecuredAnnotationRuleReplacement(rolesFinder: RolesFinder): SecuredAnnotationRule(rolesFinder) {
     override fun check(request: HttpRequest<*>?, authentication: Authentication?): Publisher<SecurityRuleResult> {
         val routeMatch = request!!.getAttribute(
             HttpAttributes.ROUTE_MATCH,
