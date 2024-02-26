@@ -16,11 +16,6 @@ import org.jetbrains.exposed.sql.transactions.transaction
 @Requires(env = ["exposed"])
 class GuestsRepositoryImpl: GuestsRepository {
 
-    object Guests : LongIdTable("guests") {
-        val firstName: Column<String> = varchar("first_name", length = 100)
-        val lastName: Column<String> = varchar("last_name", length = 100)
-    }
-
     override fun createGuest(guest: Guest): Long = transaction {
             addLogger(StdOutSqlLogger)
             Guests.insertAndGetId {

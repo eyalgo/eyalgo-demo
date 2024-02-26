@@ -1,6 +1,6 @@
 package eyalgo.demo.teststrategies
 
-import eyalgo.demo.adapters.data.exposed.GuestsRepositoryImpl.Guests
+import eyalgo.demo.adapters.data.exposed.Guests
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.extension.AfterEachCallback

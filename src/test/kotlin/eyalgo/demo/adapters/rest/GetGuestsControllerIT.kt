@@ -2,7 +2,7 @@ package eyalgo.demo.adapters.rest
 
 import eyalgo.demo.teststrategies.ExposedIntegrationTest
 import eyalgo.demo.As
-import eyalgo.demo.adapters.data.exposed.GuestsRepositoryImpl
+import eyalgo.demo.adapters.data.exposed.Guests
 import eyalgo.demo.domain.model.Guest
 import eyalgo.demo.containers.ContainerPostgres
 import eyalgo.demo.ports.GuestsRepository
@@ -32,7 +32,7 @@ class GetGuestsControllerIT {
     fun setUp() {
         if (!server.isRunning) server.start()
         transaction {
-            GuestsRepositoryImpl.Guests.deleteAll()
+            Guests.deleteAll()
         }
     }
 

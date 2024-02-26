@@ -7,7 +7,9 @@ import org.testcontainers.containers.PostgreSQLContainer
 
 @ReflectiveAccess
 class ContainerPostgres: TestResourcesPropertyProvider, DefaultApplicationContextBuilder() {
-    private val postgres = PostgreSQLContainer("postgres:15.2-alpine")
+    companion object {
+        private val postgres = PostgreSQLContainer("postgres:15.2-alpine")
+    }
 
     init {
         println("=================== ContainerPostgres init =================== ")
