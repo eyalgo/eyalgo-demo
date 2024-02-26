@@ -10,6 +10,5 @@ datasources:
 flyway:
   datasources:
     default:
-      enabled: true
       locations:
         - classpath:databasemigrations/mysql

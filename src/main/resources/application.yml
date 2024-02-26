@@ -26,6 +26,11 @@ micronaut:
         enabled: true
         connection-string: 'tcp://localhost:61616'
 
+flyway:
+  datasources:
+    default:
+      enabled: true
+
 endpoints:
   env:
     enabled: true
