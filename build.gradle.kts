@@ -11,7 +11,7 @@ plugins {
     id("com.google.devtools.ksp") version "1.9.22-1.0.17"
     id("com.github.johnrengelman.shadow") version "8.1.1"
 
-    id("io.micronaut.application") version "4.2.1"
+    id("io.micronaut.application") version "4.3.3"
     id("io.micronaut.aot") version "4.2.1"
 
     id("io.micronaut.test-resources") version "4.3.2"
@@ -55,68 +55,62 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion")
 
     // micronaut
-    val micronautVersion = "3.8.7"
-    implementation("io.micronaut:micronaut-management:$micronautVersion")
-    implementation("io.micronaut.kotlin:micronaut-kotlin-runtime:3.2.2")
-    annotationProcessor("io.micronaut:micronaut-inject-java:$micronautVersion")
-    compileOnly("io.micronaut:micronaut-inject-java:$micronautVersion")
+    implementation("io.micronaut:micronaut-management")
+    implementation("io.micronaut.kotlin:micronaut-kotlin-runtime")
+    annotationProcessor("io.micronaut:micronaut-inject-java")
+    compileOnly("io.micronaut:micronaut-inject-java")
 
     // messaging
-    implementation("io.micronaut.jms:micronaut-jms-activemq-classic:2.2.0")
+    implementation("io.micronaut.jms:micronaut-jms-activemq-classic")
 
     // micronaut serialization
-    val micronautSerdeVersion = "2.8.1"
-    ksp("io.micronaut.serde:micronaut-serde-processor:$micronautSerdeVersion")
-    annotationProcessor("io.micronaut.serde:micronaut-serde-processor:$micronautSerdeVersion")
-    implementation("io.micronaut.serde:micronaut-serde-jackson:$micronautSerdeVersion")
+    ksp("io.micronaut.serde:micronaut-serde-processor")
+    annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
+    implementation("io.micronaut.serde:micronaut-serde-jackson")
 
     // database migration
-//    implementation("io.micronaut.flyway:micronaut-flyway:5.5.0") {
+//    implementation("io.micronaut.flyway:micronaut-flyway") {
 //        exclude(group = "io.micronaut", module = "micronaut-jackson-databind")
 //    }
-//    runtimeOnly("org.flywaydb:flyway-mysql:9.16.0")
+//    runtimeOnly("org.flywaydb:flyway-mysql")
 
     // DB
-    implementation("io.micronaut.sql:micronaut-jdbc-hikari:4.8.0")
+    implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     runtimeOnly("com.h2database:h2:2.2.224")
 
     // validation
-    val micronautValidationVersion = "3.9.2"
-    ksp("io.micronaut:micronaut-http-validation:$micronautValidationVersion")
-    annotationProcessor("io.micronaut:micronaut-http-validation:$micronautValidationVersion")
-    annotationProcessor("io.micronaut.validation:micronaut-validation-processor:$micronautValidationVersion")
-    implementation("io.micronaut.validation:micronaut-validation:$micronautVersion")
+    ksp("io.micronaut:micronaut-http-validation")
+    annotationProcessor("io.micronaut:micronaut-http-validation")
+    annotationProcessor("io.micronaut.validation:micronaut-validation-processor")
+    implementation("io.micronaut.validation:micronaut-validation")
     implementation("jakarta.validation:jakarta.validation-api:3.0.2")
 
     // jwt security
-    val micronautSecurityVersion = "3.10.0"
-    annotationProcessor("io.micronaut.security:micronaut-security-annotations:$micronautSecurityVersion")
-    implementation("io.micronaut.security:micronaut-security-jwt:$micronautSecurityVersion")
-    aotPlugins("io.micronaut.security:micronaut-security-aot:$micronautSecurityVersion")
-    aotPlugins(platform("io.micronaut.platform:micronaut-platform:4.3.2"))
+    annotationProcessor("io.micronaut.security:micronaut-security-annotations")
+    implementation("io.micronaut.security:micronaut-security-jwt")
+    aotPlugins("io.micronaut.security:micronaut-security-aot")
+    aotPlugins(platform("io.micronaut.platform:micronaut-platform"))
 
     // reactive (for jwt)
-    implementation("io.micronaut.reactor:micronaut-reactor:2.6.0")
+    implementation("io.micronaut.reactor:micronaut-reactor")
 
     // metrics
-    val micronautMicrometerVersion = "4.8.2"
-    implementation("io.micronaut.micrometer:micronaut-micrometer-annotation:$micronautMicrometerVersion")
-    implementation("io.micronaut.micrometer:micronaut-micrometer-registry-prometheus:$micronautMicrometerVersion")
-    implementation("io.micronaut:micronaut-management:$micronautVersion")
+    implementation("io.micronaut.micrometer:micronaut-micrometer-annotation")
+    implementation("io.micronaut.micrometer:micronaut-micrometer-registry-prometheus")
+    implementation("io.micronaut:micronaut-management")
 
     // cache
-    val micronautCacheVersion = "3.5.0"
-    implementation("io.micronaut.cache:micronaut-cache-hazelcast:$micronautCacheVersion")
-    implementation("io.micronaut.cache:micronaut-cache-management:$micronautCacheVersion")
+    implementation("io.micronaut.cache:micronaut-cache-hazelcast")
+    implementation("io.micronaut.cache:micronaut-cache-management")
 
     // Runtime stuff
-    compileOnly("io.micronaut:micronaut-http-client:$micronautVersion")
+    compileOnly("io.micronaut:micronaut-http-client")
     runtimeOnly("ch.qos.logback:logback-classic:1.4.14")
     runtimeOnly("org.yaml:snakeyaml:2.0")
 
     // Testing
-    testImplementation("io.micronaut:micronaut-inject-java:$micronautVersion")
-    testImplementation("io.micronaut:micronaut-http-client:$micronautVersion")
+    testImplementation("io.micronaut:micronaut-inject-java")
+    testImplementation("io.micronaut:micronaut-http-client")
 
     testImplementation("io.github.hakky54:logcaptor:2.9.2")
     testImplementation("org.awaitility:awaitility-kotlin:4.2.0")
