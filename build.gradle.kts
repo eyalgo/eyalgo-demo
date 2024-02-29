@@ -4,11 +4,11 @@ import io.micronaut.testresources.buildtools.KnownModules.JDBC_POSTGRESQL
 plugins {
     idea
 
-    val kotlinVersion = "1.9.21"
+    val kotlinVersion = "1.9.22"
     kotlin("jvm") version kotlinVersion
     kotlin("plugin.serialization") version kotlinVersion
     id("org.jetbrains.kotlin.plugin.allopen") version kotlinVersion
-    id("com.google.devtools.ksp") version "1.9.21-1.0.16"
+    id("com.google.devtools.ksp") version "1.9.22-1.0.17"
     id("com.github.johnrengelman.shadow") version "8.1.1"
 
     id("io.micronaut.application") version "4.2.1"
@@ -111,19 +111,21 @@ dependencies {
 
     // Runtime stuff
     compileOnly("io.micronaut:micronaut-http-client:$micronautVersion")
-    runtimeOnly("ch.qos.logback:logback-classic:1.4.12")
+    runtimeOnly("ch.qos.logback:logback-classic:1.4.14")
     runtimeOnly("org.yaml:snakeyaml:2.0")
 
     // Testing
     testImplementation("io.micronaut:micronaut-inject-java:$micronautVersion")
-
-    val restAssuredVersion = "5.4.0"
     testImplementation("io.micronaut:micronaut-http-client:$micronautVersion")
+
+    testImplementation("io.github.hakky54:logcaptor:2.9.2")
+    testImplementation("org.awaitility:awaitility-kotlin:4.2.0")
+
+    // Rest Assured
+    val restAssuredVersion = "5.4.0"
     testImplementation("io.rest-assured:kotlin-extensions:$restAssuredVersion")
     testImplementation("io.rest-assured:json-path:$restAssuredVersion")
     testRuntimeOnly("junit:junit:4.13.2")
-    testImplementation("io.github.hakky54:logcaptor:2.9.2")
-    testImplementation("org.awaitility:awaitility-kotlin:4.2.0")
 
     // kotest and mockk
     testImplementation("io.kotest:kotest-assertions-core:5.8.0")
@@ -131,14 +133,14 @@ dependencies {
     testImplementation("io.mockk:mockk:1.13.9")
 
     // Test database drivers
-    testRuntimeOnly("org.postgresql:postgresql:42.5.4")
-    testRuntimeOnly("com.mysql:mysql-connector-j:8.2.0")
+    testRuntimeOnly("org.postgresql:postgresql:42.7.1")
+    testRuntimeOnly("com.mysql:mysql-connector-j:8.3.0")
 
     // Test Resources
     val extensionVersion = "2.3.3"
     testImplementation("io.micronaut.testresources:micronaut-test-resources-extensions-core:$extensionVersion")
     testImplementation("io.micronaut.testresources:micronaut-test-resources-extensions-junit-platform:$extensionVersion")
-    val testContainersVersion = "1.19.3"
+    val testContainersVersion = "1.19.4"
     testImplementation("org.testcontainers:testcontainers:$testContainersVersion")
     testImplementation("org.testcontainers:postgresql:$testContainersVersion")
     testImplementation("org.testcontainers:mysql:$testContainersVersion")
