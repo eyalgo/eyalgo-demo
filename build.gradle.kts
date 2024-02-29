@@ -44,6 +44,10 @@ idea {
     }
 }
 
+rootProject.apply {
+    from("gradle/exposed.gradle")
+}
+
 dependencies {
     val kotlinVersion: String by project
     // kotlin stuff
@@ -104,17 +108,6 @@ dependencies {
     val micronautCacheVersion = "3.5.0"
     implementation("io.micronaut.cache:micronaut-cache-hazelcast:$micronautCacheVersion")
     implementation("io.micronaut.cache:micronaut-cache-management:$micronautCacheVersion")
-
-    // exposed
-    // https://github.com/JetBrains/Exposed
-    val exposedVersion = "0.47.0"
-    implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
-    implementation("org.jetbrains.exposed:exposed-crypt:$exposedVersion")
-    implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
-    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
-    implementation("org.jetbrains.exposed:exposed-kotlin-datetime:$exposedVersion")
-    implementation("org.jetbrains.exposed:exposed-json:$exposedVersion")
-    implementation("org.jetbrains.exposed:exposed-money:$exposedVersion")
 
     // Runtime stuff
     compileOnly("io.micronaut:micronaut-http-client:$micronautVersion")
