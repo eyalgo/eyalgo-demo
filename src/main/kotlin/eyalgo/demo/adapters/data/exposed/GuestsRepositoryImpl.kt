@@ -31,7 +31,10 @@ class GuestsRepositoryImpl: GuestsRepository {
     }
 
     override fun createGuest(guest: Guest): Long = transaction {
-        TODO("Not yet implemented")
+        Guests.insertAndGetId {
+            it[firstName] = guest.firstName
+            it[lastName] = guest.lastName
+        }.value
     }
 
     override fun getGuest(id: Long): Guest = transaction {

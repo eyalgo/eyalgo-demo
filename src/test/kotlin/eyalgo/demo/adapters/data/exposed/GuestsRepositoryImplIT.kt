@@ -1,25 +1,31 @@
 package eyalgo.demo.adapters.data.exposed
 
-import eyalgo.demo.containers.ContainerMySQL
-import eyalgo.demo.teststrategies.ExposedIntegrationTest
 import eyalgo.demo.domain.model.Guest
 import eyalgo.demo.ports.outbound.GuestsRepository
+import eyalgo.demo.teststrategies.ExposedH2IntegrationTest
 import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.shouldBe
-import io.micronaut.test.extensions.testresources.annotation.TestResourcesProperties
 import jakarta.inject.Inject
 import java.util.UUID.randomUUID
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
-@ExposedIntegrationTest
-@TestResourcesProperties(providers = [ContainerMySQL::class])
+@ExposedH2IntegrationTest
 class GuestsRepositoryImplIT {
     @Inject
     lateinit var repo: GuestsRepository
 
     @Test
+    fun `create a guest in DB`() {
+        val guest = Guest("Eyal", "Golan")
+        val id = repo.createGuest(guest)
+        repo.getGuest(id) shouldBe guest
+    }
+
+    @Test
+    @Disabled("for future use (messaging)")
     fun `create and get a guest`() {
         val guest = Guest("Eyal", "Golan")
         val messageId = randomUUID()

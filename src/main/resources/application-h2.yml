@@ -11,4 +11,4 @@ flyway:
   datasources:
     default:
       locations:
-        - classpath:databasemigrations/mysql
+        - classpath:databasemigrations/h2
