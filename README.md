@@ -44,6 +44,10 @@ An example project using Micronaut and Kotlin
 - [Micronaut Kotlin Symbol Processing (KSP) documentation](https://docs.micronaut.io/latest/guide/#kotlin)
 - [https://kotlinlang.org/docs/ksp-overview.html](https://kotlinlang.org/docs/ksp-overview.html)
 
+## Gradle
+
+- [gradle plugin](https://micronaut-projects.github.io/micronaut-gradle-plugin/latest/index.html)
+
 # TODO
 
 - Setup project ✅
