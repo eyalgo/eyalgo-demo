@@ -69,14 +69,16 @@ dependencies {
     implementation("io.micronaut.serde:micronaut-serde-jackson")
 
     // database migration
-//    implementation("io.micronaut.flyway:micronaut-flyway") {
-//        exclude(group = "io.micronaut", module = "micronaut-jackson-databind")
-//    }
-//    runtimeOnly("org.flywaydb:flyway-mysql")
+    implementation("io.micronaut.flyway:micronaut-flyway")
+    runtimeOnly("org.flywaydb:flyway-mysql") // for h2
 
     // DB
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
+
+    // database drivers
     runtimeOnly("com.h2database:h2:2.2.224")
+//    implementation("org.postgresql:postgresql")
+    testRuntimeOnly("com.mysql:mysql-connector-j:8.3.0")
 
     // validation
     ksp("io.micronaut:micronaut-http-validation")
@@ -124,11 +126,7 @@ dependencies {
     // kotest and mockk
     testImplementation("io.kotest:kotest-assertions-core:5.8.0")
     testImplementation("io.kotest.extensions:kotest-assertions-arrow:1.4.0")
-    testImplementation("io.mockk:mockk:1.13.9")
-
-    // Test database drivers
-    testRuntimeOnly("org.postgresql:postgresql:42.7.1")
-    testRuntimeOnly("com.mysql:mysql-connector-j:8.3.0")
+    testImplementation("io.mockk:mockk:1.13.10")
 
     // Test Resources
     val extensionVersion = "2.3.3"

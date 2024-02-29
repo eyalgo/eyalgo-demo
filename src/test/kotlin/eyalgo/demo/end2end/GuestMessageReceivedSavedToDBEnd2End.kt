@@ -46,7 +46,6 @@ class GuestMessageReceivedSavedToDBEnd2End {
     private lateinit var guestsRepository: GuestsRepository
 
     @Test
-    @Disabled
     fun `a message with a guest saves the them in the DB`() {
         val messageId = randomUUID()
         guestsProducer.send(GuestCreateMessage(messageId, "first-name", "last-name"))

@@ -2,9 +2,8 @@ package eyalgo.demo.adapters.rest
 
 import eyalgo.demo.teststrategies.ExposedIntegrationTest
 import eyalgo.demo.As
-import eyalgo.demo.adapters.data.exposed.Guests
+import eyalgo.demo.containers.ContainerMySQL
 import eyalgo.demo.domain.model.Guest
-import eyalgo.demo.containers.ContainerPostgres
 import eyalgo.demo.ports.GuestsRepository
 import io.kotest.matchers.shouldBe
 import io.micronaut.runtime.server.EmbeddedServer
@@ -16,12 +15,10 @@ import io.restassured.module.kotlin.extensions.When
 import jakarta.inject.Inject
 import java.util.UUID.randomUUID
 import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 @ExposedIntegrationTest
-@TestResourcesProperties(providers = [ContainerPostgres::class])
-@Disabled("Bring back after flyway")
+@TestResourcesProperties(providers = [ContainerMySQL::class])
 class GetGuestsControllerIT {
     @Inject
     lateinit var repo: GuestsRepository
