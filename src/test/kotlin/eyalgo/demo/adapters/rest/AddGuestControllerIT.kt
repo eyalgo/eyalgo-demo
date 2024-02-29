@@ -1,29 +1,39 @@
 package eyalgo.demo.adapters.rest
 
 import eyalgo.demo.Is
-import eyalgo.demo.adapters.data.exposed.Guests
-import eyalgo.demo.teststrategies.ExposedH2IntegrationTest
-import eyalgo.demo.teststrategies.STUBBED_GUEST_ID
+import eyalgo.demo.domain.model.Guest
+import eyalgo.demo.ports.inbound.AddGuests
 import io.micronaut.runtime.server.EmbeddedServer
+import io.micronaut.test.annotation.MockBean
+import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import io.restassured.http.ContentType.JSON
 import io.restassured.module.kotlin.extensions.Given
 import io.restassured.module.kotlin.extensions.Then
 import io.restassured.module.kotlin.extensions.When
 import jakarta.inject.Inject
-import org.jetbrains.exposed.sql.deleteAll
-import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
+import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS
 
-@ExposedH2IntegrationTest
+@TestInstance(PER_CLASS)
+@MicronautTest(
+    startApplication = false,
+    environments = ["integrationTest"]
+)
 class AddGuestControllerIT {
     @Inject
     private lateinit var server: EmbeddedServer
 
+    private val stubbedGuestId = 19L
+    @MockBean(AddGuests::class)
+    fun addGuests(): AddGuests = object : AddGuests {
+        override fun add(guest: Guest): Long = stubbedGuestId
+    }
+
     @BeforeEach
     fun setUp() {
         if (!server.isRunning) server.start()
-        transaction { Guests.deleteAll() }
     }
 
     @Test
@@ -36,7 +46,7 @@ class AddGuestControllerIT {
             post("/guests")
         } Then {
             statusCode(201)
-            body (Is(STUBBED_GUEST_ID.toString()))
+            body (Is(stubbedGuestId.toString()))
         }
     }
 }
