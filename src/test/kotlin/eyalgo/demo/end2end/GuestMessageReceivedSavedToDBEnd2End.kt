@@ -6,7 +6,7 @@ import eyalgo.demo.adapters.messaging.GuestCreateMessage
 import eyalgo.demo.containers.ContainerActiveMQ
 import eyalgo.demo.containers.ContainerMySQL
 import eyalgo.demo.domain.model.Guest
-import eyalgo.demo.ports.GuestsRepository
+import eyalgo.demo.ports.outbound.GuestsRepository
 import eyalgo.demo.teststrategies.ExposedTestExtension
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.shouldBe
@@ -25,7 +25,6 @@ import org.awaitility.kotlin.await
 import org.awaitility.kotlin.untilAsserted
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.TestInstance.Lifecycle.PER_CLASS

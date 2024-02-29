@@ -1,7 +1,7 @@
 package eyalgo.demo.domain.model
 
 import eyalgo.demo.domain.GetGuestsService
-import eyalgo.demo.ports.GuestsRepository
+import eyalgo.demo.ports.outbound.GuestsRepository
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.shouldBe
 import io.mockk.mockk

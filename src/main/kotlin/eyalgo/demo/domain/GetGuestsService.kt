@@ -1,7 +1,7 @@
 package eyalgo.demo.domain
 
 import eyalgo.demo.domain.model.Guest
-import eyalgo.demo.ports.GuestsRepository
+import eyalgo.demo.ports.outbound.GuestsRepository
 import jakarta.inject.Singleton
 import org.slf4j.LoggerFactory
 

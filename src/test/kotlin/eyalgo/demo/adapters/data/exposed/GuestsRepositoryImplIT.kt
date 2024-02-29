@@ -3,7 +3,7 @@ package eyalgo.demo.adapters.data.exposed
 import eyalgo.demo.containers.ContainerMySQL
 import eyalgo.demo.teststrategies.ExposedIntegrationTest
 import eyalgo.demo.domain.model.Guest
-import eyalgo.demo.ports.GuestsRepository
+import eyalgo.demo.ports.outbound.GuestsRepository
 import io.kotest.matchers.collections.shouldContainAll
 import io.kotest.matchers.shouldBe
 import io.micronaut.test.extensions.testresources.annotation.TestResourcesProperties

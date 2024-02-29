@@ -1,7 +1,7 @@
 package eyalgo.demo.adapters.data.exposed
 
 import eyalgo.demo.domain.model.Guest
-import eyalgo.demo.ports.GuestsRepository
+import eyalgo.demo.ports.outbound.GuestsRepository
 import io.micronaut.context.annotation.Requires
 import jakarta.inject.Singleton
 import java.util.UUID
@@ -28,6 +28,10 @@ class GuestsRepositoryImpl: GuestsRepository {
             it[this.guestId] = guestId
         }
         guestId
+    }
+
+    override fun createGuest(guest: Guest): Long = transaction {
+        TODO("Not yet implemented")
     }
 
     override fun getGuest(id: Long): Guest = transaction {
