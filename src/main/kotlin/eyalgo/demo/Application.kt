@@ -1,8 +1,10 @@
 package eyalgo.demo
 
 import io.micronaut.runtime.Micronaut.run
-import io.micronaut.serde.annotation.SerdeImport
-import org.flywaydb.core.internal.info.MigrationInfoImpl
+//import io.micronaut.serde.annotation.SerdeImport
+//import org.flywaydb.core.internal.info.MigrationInfoImpl
+
+//import org.flywaydb.core.internal.info.MigrationInfoImpl
 
 object Application {
 	@JvmStatic
@@ -11,5 +13,5 @@ object Application {
 	}
 }
 
-@SerdeImport(MigrationInfoImpl::class)
-object Serdes
+//@SerdeImport(MigrationInfoImpl::class)
+//object Serdes

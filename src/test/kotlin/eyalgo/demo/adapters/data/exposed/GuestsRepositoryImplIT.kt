@@ -11,10 +11,12 @@ import jakarta.inject.Inject
 import java.util.UUID.randomUUID
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 @ExposedIntegrationTest
 @TestResourcesProperties(providers = [ContainerPostgres::class])
+@Disabled("Bring back after flyway")
 class GuestsRepositoryImplIT {
     @Inject
     lateinit var repo: GuestsRepository

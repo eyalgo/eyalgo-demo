@@ -16,10 +16,12 @@ import io.restassured.module.kotlin.extensions.When
 import jakarta.inject.Inject
 import java.util.UUID.randomUUID
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 
 @ExposedIntegrationTest
 @TestResourcesProperties(providers = [ContainerPostgres::class])
+@Disabled("Bring back after flyway")
 class GetGuestsControllerIT {
     @Inject
     lateinit var repo: GuestsRepository

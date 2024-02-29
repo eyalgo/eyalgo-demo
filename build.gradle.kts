@@ -71,10 +71,10 @@ dependencies {
     implementation("io.micronaut.serde:micronaut-serde-jackson:$micronautSerdeVersion")
 
     // database migration
-    implementation("io.micronaut.flyway:micronaut-flyway:5.5.0") {
-        exclude(group = "io.micronaut", module = "micronaut-jackson-databind")
-    }
-    runtimeOnly("org.flywaydb:flyway-mysql:9.16.0")
+//    implementation("io.micronaut.flyway:micronaut-flyway:5.5.0") {
+//        exclude(group = "io.micronaut", module = "micronaut-jackson-databind")
+//    }
+//    runtimeOnly("org.flywaydb:flyway-mysql:9.16.0")
 
     // DB
     implementation("io.micronaut.sql:micronaut-jdbc-hikari:4.8.0")
